@@ -1,0 +1,93 @@
+@import "./../../styles/variables";
+      //#66757f;
+
+
+._container{
+    min-height: 400px;
+    background-color: $bg-color;
+    color: $color;
+}
+@media (min-width: 960px) {
+  .body{
+    max-width: 52rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.welcome{
+    display: flex;
+    h1{
+        margin-left: auto;
+        margin-right: auto;
+        color: $h-color;
+        margin-top: 10px;
+    }
+}
+.about{
+    display: flex;
+    margin-top: 10px;
+     h2{
+       color: $color-logo;
+     }
+
+   div{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+.c-3{
+  background-color: $bg-color-3;
+  border-radius: .5rem;
+  padding: .5rem .5rem;
+}
+.c-2{
+
+ //   padding: 0 1rem ;
+    padding-left: 1rem;
+    color: $h-color;;
+
+}
+.c-1{
+    padding: 0 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
+h4{
+  background-color:$h-bg-color;// salmon;
+ // text-align: center;
+  padding-left: 1rem;
+}
+/*
+mat-panel-title
+{
+  background-color: $c7;
+}
+*/
+.mat-expansion-panel{
+  background-color: $bg-color-2;
+  margin-bottom: 0.1rem;
+
+}
+
+.mat-expansion-panel-header-title{
+  font-weight: 500;
+  color: $color;
+}
+.mat-expansion-panel-header{
+
+   // height: 2.5rem;
+    padding: .4rem .9rem;
+    background-color: $bg-color-3;
+
+}
+.mat-expansion-panel-header.mat-expanded:focus, .mat-expansion-panel-header.mat-expanded:hover {
+  /* background: inherit; */
+  background: $bg-color-1;
+}
+#ats a{
+  background-color: rgb(228, 214, 228);
+}
+
+
+

@@ -1,0 +1,61 @@
+<mat-toolbar class="_container">
+  <div class="col_inner">
+    <a href="" class="nav_link">
+     
+      <img
+        class="logo_inner-img"
+        src="./../../assets/Logo.png"
+        alt=""
+        loading="lazy"
+      />
+      <span class="logo_inner-name">{{ company_name }}</span>
+    </a>
+  </div>
+  <div class="col_inner logo-column">
+    <div class="logo-position-name"> {{ company_name }}</div>
+    <a class="nav_link" href="tel:+79280361055"> (+7-928-361-10-55 ) </a>
+  </div>
+
+  <div class="col_inner">
+    <!------------ start button menu-->
+    <div class="mobile-nav">
+      <!---       statr -->
+      <div class="menu-md">
+        <button mat-icon-button (click)="drawer.toggle()" class="nav_link">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <!---------/-->
+    </div>
+
+    <div class="menu-lg">
+      <span>
+        <a class="nav_link" routerLink="lazy-page/price">Тарифы</a>
+      </span>
+      <span>
+        <a class="nav_link" routerLink="lazy-page/about">онас</a>
+      </span>
+    </div>
+  </div>
+</mat-toolbar>
+<mat-drawer-container>
+    <!------------ start button menu-->
+  <mat-drawer #drawer class="app-navbar">
+    <ul class="navbar-nav me-auto my-2 pe-2">
+
+       <li class="nav-item py-1 ">
+        <a  class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="lazy-page/price">Тарифы</a>
+       </li>
+       <li class="nav-item py-2">
+        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="lazy-page/about">онас</a>
+       </li>
+    </ul>
+
+  </mat-drawer>
+   <!---------/-->
+  <mat-drawer-content>
+    <div class="_body"></div>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+

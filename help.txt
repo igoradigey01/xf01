@@ -1,0 +1,4 @@
+//------------------------------------------------
+ng build --prod
+ssh root@46.173.223.214
+scp -r C:\Users\Ks34\Documents\AngularProject\admin-page\dist\admin-page root@46.173.223.214:~/myapp/nginx/data

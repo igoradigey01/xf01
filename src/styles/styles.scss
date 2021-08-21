@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./variables";
+@import "./stylesnull.scss";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+ul{
+  margin-left: 1rem;
+}
+li{
+  list-style-type: none;
+}
+
+.mat-body-2
+{
+  font-weight: 500;
+}
+
+.img-social-apps{  // vk instogramm wathaap
+  height: 20px;
+  vertical-align: middle;
+}
+.conteiner-social-apps{
+  display: flex;
+}
+
+
+
+
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
