@@ -2,6 +2,8 @@ certbot certonly  --webroot    -m admin@x-01.ru -d s.x-01.ru
 
 Input the webroot for s.x-01.ru: (Enter 'c' to cancel): nginx/data
 
+cp  /etc/letsencrypt/live/xf-01.ru/privkey.pem fx-01.ru.key  // copy files
+
 Successfully received certificate.
 Certificate is saved at: /etc/letsencrypt/live/s.x-01.ru/fullchain.pem
 Key is saved at:         /etc/letsencrypt/live/s.x-01.ru/privkey.pem

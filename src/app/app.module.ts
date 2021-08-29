@@ -10,14 +10,21 @@ import { PriceComponent } from './price/price.component';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, ContentComponent, PriceComponent,  PageNotFoundComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    ContentComponent,
+    PriceComponent,
+    PageNotFoundComponent,
+    
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent],

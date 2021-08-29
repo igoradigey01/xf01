@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentComponent implements OnInit {
 
+  teg_meta:string="Функциональная фурнитура;лицевая фурнитура;Кухонные мойки;Встраиваемая техника;Столешницы;Кромка пвх;"
+
   constructor() { }
 
   ngOnInit(): void {

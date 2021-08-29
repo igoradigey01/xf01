@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./variables";
-@import "./stylesnull.scss";
+//@import "./stylesnull.scss";
 
 html,
 body {
@@ -35,13 +35,6 @@ li{
   font-weight: 500;
 }
 
-.img-social-apps{  // vk instogramm wathaap
-  height: 20px;
-  vertical-align: middle;
-}
-.conteiner-social-apps{
-  display: flex;
-}
 
 
 
@@ -49,5 +42,4 @@ li{
 
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

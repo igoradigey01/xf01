@@ -1,12 +1,23 @@
 //------------------------------------------------
 ng build --prod
+ng g m --routing katalog
+//-------------------
 ssh root@46.173.223.214
 scp -r C:\Users\Ks34\Documents\AngularProject\xf01\dist\xf01 root@46.173.223.214:~/myapp/nginx/data
 
 //--------------------------------------
 certbot certonly  --webroot    -m admin@x-01.ru -d s.x-01.ru
+//----------------------------------------
+certbot certonly  --webroot    -m admin@x-01.ru -d xf-01.ru
 
 Input the webroot for s.x-01.ru: (Enter 'c' to cancel): nginx/data
+
+//-----------------------------------
+Certificate is saved at: /etc/letsencrypt/live/xf-01.ru/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/xf-01.ru/privkey.pem
+This certificate expires on 2021-11-25.
+
+//---------------------------------
 
 Successfully received certificate.
 Certificate is saved at: /etc/letsencrypt/live/s.x-01.ru/fullchain.pem

@@ -1,19 +1,35 @@
-<mat-toolbar class="_container">
+<mat-toolbar class="_container_nav">
   <div class="col_inner">
-    <a href="" class="nav_link">
+    <a routerLink="" class="nav_link">
+      <span class="logo_inner-name" >{{company_name_1}}</span>
 
       <img
         class="logo_inner-img"
-        src="./../../assets/Logo.png"
+        src="./../../../assets/images/Logo4.png"
         alt=""
         loading="lazy"
       />
-      <span class="logo_inner-name">{{ company_name }}</span>
+      <span class="logo_inner-name-2">{{ company_name_2}}</span>
     </a>
   </div>
   <div class="col_inner logo-column">
-    <div class="logo-position-name"> {{ company_name }}</div>
+    <div class="logo-position-name"> <span > {{company_name_1}}</span><span> </span> <span style="color: black;"> {{company_name_2}}</span></div>
+    <div class="commutation"></div>
     <a class="nav_link" href="tel:+79280361055"> (+7-928-036-10-55 ) </a>
+
+    <div class="conteiner-social-apps">
+      <button type="button" class="btn btn-link">
+        <a href="https://www.instagram.com/furnitura_fuksman_01/">
+      <img src="./../../../assets/images/massager_social/Instagram_64_2.png" class="img-social-apps" alt="instagram">
+    </a>
+    </button>
+      <button type="button" class="btn btn-link">
+        <a href=" https://wa.me/+79280361055?text=Здравствуйте%20(xf-01)%20Меня%20интересует%20информация%20о%20 ">
+      <img src="./../../../assets/images/massager_social/Whatsapp_64.png" class="img-social-apps" alt="whatsapp" >
+    </a>
+      </button>
+
+    </div>
   </div>
 
   <div class="col_inner">
@@ -38,9 +54,7 @@
       <span>
         <a class="nav_link" routerLink="menu/garantiya">Гарантии</a>
       </span>
-      <span>
-        <a class="nav_link" routerLink="price">Тарифы</a>
-      </span>
+
       <span>
         <a class="nav_link" routerLink="menu/about">онас</a>
       </span>
@@ -52,12 +66,21 @@
   <mat-drawer #drawer class="app-navbar">
     <ul class="navbar-nav me-auto my-2 pe-2">
 
-       <li class="nav-item py-1 ">
-        <a  class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="lazy-page/price">Тарифы</a>
-       </li>
-       <li class="nav-item py-2">
-        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="lazy-page/about">онас</a>
-       </li>
+      <li class="nav-item py-1" >
+        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="menu/kak-zakazat">Как заказать?</a>
+      </li>
+      <li class="nav-item py-1" >
+        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="menu/oplata-i-dostavka">Оплата и Доставка</a>
+      </li>
+      <li class="nav-item py-1">
+        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="menu/garantiya">Гарантии</a>
+      </li>
+
+      <li class="nav-item py-1">
+        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="menu/about">онас</a>
+      </li>
+
+
     </ul>
 
   </mat-drawer>
