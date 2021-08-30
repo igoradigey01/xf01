@@ -15,6 +15,10 @@ const routes: Routes = [{
     loadChildren: () => import('./Header/header.module').then((m) => m.HeaderModule),
   },
   {
+    path: 'katalog',
+    loadChildren: () => import('./Katalog/katalog.module').then((m) => m.KatalogModule),
+  },
+  {
     path: '**',
     component: PageNotFoundComponent},
 ];
