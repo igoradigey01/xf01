@@ -22,4 +22,41 @@ $bg-color-2: #f4f8ff;
 $bg-color-1: #e6ebf3;
 $bg-color-3: #ffffff;
 //--------------------------- global Class------------
+.mat-drawer {
+  background-color:#dfe7e7
+}
 
+
+
+._card{
+  height: auto;
+  width: 410px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  img{
+    width: 400px;
+  }
+  margin-bottom: 1rem;
+}
+
+._container
+{
+  min-height: 400px;
+  padding: 0 0;
+  margin: 0 0;
+  display: block;
+  overflow:  hidden;
+  //padding: 0;
+ // display: flex;
+  //background-color: $bg-color;
+  //justify-content: space-between;
+}
+
+.img-social-apps{  // vk instogramm wathaap
+  height: 20px;
+  vertical-align: middle;
+}
+.conteiner-social-apps{
+  display: flex;
+}

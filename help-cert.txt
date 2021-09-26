@@ -1,4 +1,4 @@
-certbot certonly  --webroot    -m admin@x-01.ru -d s.x-01.ru
+certbot certonly  --webroot    -m admin@x-01.ru -d xf-01.ru
 
 Input the webroot for s.x-01.ru: (Enter 'c' to cancel): nginx/data
 
