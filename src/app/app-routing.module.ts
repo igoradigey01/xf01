@@ -20,8 +20,8 @@ const routes: Routes = [
   },
 
   {
-    path: 'katalog',
-    loadChildren: () => import('./content-old_/katalog.module').then((m) => m.KatalogModule),
+    path: 'content',
+    loadChildren: () => import('./content_/content.module').then((m) => m.ContentModule),
   },
   {
     path: '**',

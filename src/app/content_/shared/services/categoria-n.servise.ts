@@ -18,7 +18,7 @@ export class CategoriaNService {
 
   public CategoriaNs = (): Observable<CategoriaN[]> => {
     this.url.Controller = 'CategoriaN';
-    this.url.Action = 'get';
+    this.url.Action = 'GetRoleF';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,

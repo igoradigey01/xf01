@@ -1,6 +1,12 @@
 @import "./../../../styles/content-styles.scss";
+._container {
+  min-height: 400px;
+  background-color: $bg-color;
+  color: $color;
+}
 
 .grid-container {
+  margin-top: 2rem;
   display: grid;
   width: 100%;
   margin-left: 0;
@@ -11,16 +17,18 @@
 
 button {
   font-size: 1.2em;
-  font-weight: 900;
-  color: #fff; // #0c0c0c ;// $color; //
+  color: var(--bs-info);
+  //font-weight: 900;
+ // color: #fff; // #0c0c0c ;// $color; //
   width: 100%;
 
   text-transform: uppercase;
   text-align: center;
-  opacity: 0.7;
-  background-color: #84baf085;
+  //opacity: 0.7;
+ //background-color:  #9384f0e6;
+ background-color: #f1f0f0;
 
-  border: 0.2em solid #fff;
+  border: 0.2em solid var(--bs-info);
   border-radius: 0.5em;
   margin: 1%;
 }
@@ -39,10 +47,10 @@ button {
   color: #fff;
  }
 button:hover {
-  // border: solid  $h-bg-color ; // #e66333;
-  opacity: 1;
-  color: #fff; //#dedbdb;
-  background-color: #84baf085;
+   border: solid  $h-bg-color ; // #e66333;
+ // opacity: 1;
+  color:   #fff; //#dedbdb;
+ // background-color: #9384f0f5;
 }
 
 @media (min-width: 768px) {

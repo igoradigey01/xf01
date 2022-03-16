@@ -8,8 +8,7 @@ import { HeaderComponent } from './header_/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CategoriaNComponent } from './content_/categoria-n/categoria-n.component';
-import { KatalogNComponent } from './katalog_/katalog-n/katalog-n.component';
-import { OptCategoriaNComponent } from './content_/opt-categoria-n/opt-categoria-n.component';
+
 import {SharedVarService} from './_shared/services/shared-var.service'
 
 
@@ -19,8 +18,7 @@ import {SharedVarService} from './_shared/services/shared-var.service'
     HeaderComponent,
     PageNotFoundComponent,
     CategoriaNComponent,
-    KatalogNComponent,
-    OptCategoriaNComponent,
+
 
   ],
   imports: [
