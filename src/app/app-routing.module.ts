@@ -24,6 +24,17 @@ const routes: Routes = [
     loadChildren: () => import('./content_/content.module').then((m) => m.ContentModule),
   },
   {
+    path: 'manager',
+    loadChildren: () =>
+      import('./manager_/manager.module').then((m) => m.ManagerModule),
+  },
+
+  {
+    path: 'account',
+    loadChildren: () =>
+      import('./account_/account.module').then((m) => m.AuthModule),
+  },
+  {
     path: '**',
     component: PageNotFoundComponent},
 ];

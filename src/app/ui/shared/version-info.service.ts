@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { ManagerServiceModule } from './maneger-service.module';
+import { ManagerServiceModule } from '../../manager_/shared/sevices/maneger-service.module';
 import { VersionInfo} from 'src/app/_shared/_interfaces/vertion-info.model';
 import { TokenService } from 'src/app/_shared/services/token.service';
 import { RouteApiService } from 'src/app/_shared/services/route-api.service';
