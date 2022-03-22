@@ -60,7 +60,7 @@ export class UserManagerService {
   public get IsManager(): boolean {
     // throw new Error("not impliment exeption");
 
-    if (this.Role === 'manager') {
+    if (this.Role === 'manager'||this.Role==='furniture') {
       return true;
     }
     return false;

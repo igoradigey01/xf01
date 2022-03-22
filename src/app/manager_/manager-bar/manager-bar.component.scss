@@ -1,10 +1,23 @@
 @import './../../../styles/manager-styles.scss';
 
+
+@mixin img-size($size: 400px) {
+
+//  height: $size;
+  width: $size;
+
+}
+
 .c-1 {
 	padding-top: 5px;
 
 }
 
+.button-size-container{
+  width: 8rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 h4{
   margin-bottom: 0px;
 }

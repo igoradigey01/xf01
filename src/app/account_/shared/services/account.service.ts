@@ -6,13 +6,13 @@ import { tap } from 'rxjs/operators';
 
 import { AccoutServiceModule } from './accout-service.module';
 
-import { TokenService } from 'src/app/shared/services/token.service';
-import { TokenModel } from 'src/app/shared/_interfaces/token-model';
-import { RouteApiService } from 'src/app/shared/services/route-api.service';
+import { TokenService } from 'src/app/_shared/services/token.service';
+import { TokenModel } from 'src/app/_shared/_interfaces/token-model';
+import { RouteApiService } from 'src/app/_shared/services/route-api.service';
 import { RegistrationResponseDto } from '../_interfaces/registration-responseDto.model';
 import { UserRegistrationDto } from '../_interfaces/user-registrationDto.model';
 import { ForgotPasswordDto } from '../_interfaces/forgot-passwordDto.model';
-import { UrlEncoder } from 'src/app/shared/_class/url-encoder.class';
+import { UrlEncoder } from 'src/app/_shared/_class/url-encoder.class';
 import { ResetPasswordDto } from '../_interfaces/reset-passwordDto.model';
 
 @Injectable({

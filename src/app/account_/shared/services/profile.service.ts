@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TokenService } from 'src/app/shared/services/token.service';
+import { TokenService } from 'src/app/_shared/services/token.service';
 import { AccoutServiceModule } from './accout-service.module';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { RouteApiService } from 'src/app/shared/services/route-api.service';
-import { User } from '../../../shared/_interfaces/user.model';
+import { RouteApiService } from 'src/app/_shared/services/route-api.service';
+import { User } from 'src/app/_shared/_interfaces/user.model';
 
 @Injectable({
   providedIn: AccoutServiceModule
@@ -43,7 +43,7 @@ export class ProfileService {
     return this.http.post<any>(this.url.Url, user);
   } */
   public Update(user: User): Observable<any> {
-    // throw new Error("Not implict");
+     throw new Error("Not implict");
     this.url.Action = 'Edit';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -53,6 +53,7 @@ export class ProfileService {
   }
 
   public Delete(id: string): Observable<any> {
+    throw new Error("Not implict");
     this.url.Action = 'delete';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',

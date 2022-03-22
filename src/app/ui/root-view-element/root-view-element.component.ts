@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {StateView} from 'src/app/shared/_interfaces/state-view';
-import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
+import {StateView} from 'src/app/_shared/_interfaces/state-view';
+import { KatalogUI } from './../shared/_interfaces/katalog.model';
 
 import { EventEmitter, Input, Output} from '@angular/core';
 
@@ -40,7 +40,7 @@ export class RootViewElementComponent implements OnInit {
 
   public addItem():void {
     this._flagViewState = StateView.create;
-    this._selectedKagalog = <Katalog>{ id: -1, name: '' };
+    this._selectedKagalog = <KatalogUI>{ id: -1, name: '' };
     this.onChangedViewMode.emit(this._flagViewState);
 
   }

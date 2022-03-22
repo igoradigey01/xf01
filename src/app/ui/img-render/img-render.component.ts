@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/shared/_interfaces/product.model';
+//import { Product } from './../shared/_interfaces/product.model';
 import { EventEmitter, Input, Output } from '@angular/core';
 
 import {
@@ -8,7 +8,7 @@ import {
   ImageTransform,
 } from 'ngx-image-cropper';
 
-import { ImgManagerService } from 'src/app/shared/services/img-manager.service';
+import { ImgManagerService } from 'src/app/_shared/services/img-manager.service';
 
 
 export interface DtoImage {
