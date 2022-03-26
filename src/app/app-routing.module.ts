@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 //import {ContentComponent} from './content-old_/content/content.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {CategoriaNComponent} from './content_/categoria-n/categoria-n.component'
+import {CategoriaNComponent} from './content_/categoria_/categoria-n/categoria-n.component'
 
 
 const routes: Routes = [

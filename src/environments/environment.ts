@@ -9,7 +9,7 @@ export const environment = {
   serverRoot: 'http://localhost:5010/',  //'https://s.x-01.ru/',               //
   serverAuthority:'http://localhost:5010/',//'https://s.x-01.ru/',             //
   clientId:'angular-client',
-  version:'b2.02.22',
+  version:'b2.03.22',
   description:"Client shop- вторая редакция (angular:13.1.2)"
 
 };

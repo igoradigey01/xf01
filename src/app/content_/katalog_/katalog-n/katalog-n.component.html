@@ -1,1 +1,20 @@
-<p>katalog-n works!</p>
+
+<div class="container-fluid _container">
+  <div class="h4 text-center mb-0" style="margin-top: 1rem;"> {{  _categoriaN_name }}</div>
+  <div class="grid-container">
+    <div *ngFor="let item of _katalogNs">
+      <div *ngIf="!item.hidden">
+
+          <button
+            class="btn btn-outline-info"
+
+            [routerLink]="['/content/kataog', item.id]"
+            [queryParams]="{ katalog: item.name }"
+          >
+            {{ item.name }}
+          </button>
+
+      </div>
+    </div>
+  </div>
+</div>

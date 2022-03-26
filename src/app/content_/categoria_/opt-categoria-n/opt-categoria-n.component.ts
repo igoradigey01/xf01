@@ -1,17 +1,19 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { CategoriaN} from 'src/app/_shared/_interfaces/categoria-n.model';
-import { CategoriaNService} from './../shared/services/categoria-n.servise';
+import { CategoriaNService} from '../../shared/services/categoria-n.servise';
 import { Meta, Title } from '@angular/platform-browser';
 import {SharedVarService} from 'src/app/_shared/services/shared-var.service';
 import {SEO_var} from 'src/app/_shared/_interfaces/SEO-var.models'
 
 @Component({
-  selector: 'app-categoria-n',
-  templateUrl: './categoria-n.component.html',
-  styleUrls: ['./categoria-n.component.scss']
+  selector: 'app-opt-categoria-n',
+  templateUrl: './opt-categoria-n.component.html',
+  styleUrls: ['./opt-categoria-n.component.scss']
 })
-export class CategoriaNComponent implements OnInit {
+export class OptCategoriaNComponent implements OnInit {
+
+
 
   @Input() flagStyle: boolean = false;
 
@@ -55,4 +57,5 @@ export class CategoriaNComponent implements OnInit {
   }
 }
 //------------------------------
+
 

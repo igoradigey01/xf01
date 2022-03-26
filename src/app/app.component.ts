@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'xf01';
+  name = 'Мебельная Фурнитура Ханская';
   year:number=new Date(2021,0,1).getFullYear();
-  titl:string=" ИП Должанский ";
+  title:string=" ИП Должанский ";
 }

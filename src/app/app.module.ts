@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header_/menu/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { CategoriaNComponent } from './content_/categoria-n/categoria-n.component';
+import { CategoriaNComponent } from './content_/categoria_/categoria-n/categoria-n.component';
 
-import {SharedVarService} from './_shared/services/shared-var.service'
+import {SharedVarService} from './_shared/services/shared-var.service';
+
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {SharedVarService} from './_shared/services/shared-var.service'
     HeaderComponent,
     PageNotFoundComponent,
     CategoriaNComponent,
+
 
 
   ],

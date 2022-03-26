@@ -1,4 +1,4 @@
-@import "./../../../styles/content-styles.scss";
+@import "./../../../../styles/content-styles.scss";
 
 $h-color: #8c989b;
 $button-border: #be8989;
@@ -8,7 +8,7 @@ $button-border: #be8989;
 ._h4 {
   text-align: center;
   margin-top: 1rem;
-  color: $button-border;
+  color: $h-color;
   font-weight: 900;
   text-transform: uppercase;
 }

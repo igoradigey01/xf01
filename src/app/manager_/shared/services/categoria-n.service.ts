@@ -88,7 +88,7 @@ export class CategoriaNService {
   //-------------------
 
   public Delete = (id: number): Observable<any> => {
-    this._url.Controller = 'KatalogN';
+    this._url.Controller = 'CategoriaN';
     this._url.Action = 'delete';
 
 

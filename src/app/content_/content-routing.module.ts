@@ -2,13 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { KatalogNComponent } from './katalog_/katalog-n/katalog-n.component';
 import {OptKatalogNComponent} from './katalog_/opt-katalog-n/opt-katalog-n.component'
-import { OptCategoriaNComponent } from './opt-categoria-n/opt-categoria-n.component';
+import { OptCategoriaNComponent } from './categoria_/opt-categoria-n/opt-categoria-n.component';
+import {PrivacyComponent} from './privacy-policy/privacy.component'
+
 
 
 const routes: Routes = [
   {
-    path:"categoriaN/:id",component:KatalogNComponent
+    path:"categoria/:id",component:KatalogNComponent
   },
+  {path:'privacy',component:PrivacyComponent},
   {
     path:'opt',component:OptCategoriaNComponent
   },

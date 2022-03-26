@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {KatalogN} from 'src/app/_shared/_interfaces/katalog-n.model';
 import {StateView} from 'src/app/_shared/_interfaces/state-view';
-import { KatalogNService} from '../../shared/services/katalogN.service';
+import { KatalogNService} from '../../shared/services/katalog-n.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Input, Output, EventEmitter } from '@angular/core';

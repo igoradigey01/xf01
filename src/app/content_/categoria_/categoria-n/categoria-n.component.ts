@@ -1,23 +1,28 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { CategoriaN} from 'src/app/_shared/_interfaces/categoria-n.model';
-import { CategoriaNService} from './../shared/services/categoria-n.servise';
+import { CategoriaNService} from '../../shared/services/categoria-n.servise';
 import { Meta, Title } from '@angular/platform-browser';
 import {SharedVarService} from 'src/app/_shared/services/shared-var.service';
 import {SEO_var} from 'src/app/_shared/_interfaces/SEO-var.models'
 
 @Component({
-  selector: 'app-opt-categoria-n',
-  templateUrl: './opt-categoria-n.component.html',
-  styleUrls: ['./opt-categoria-n.component.scss']
+  selector: 'app-categoria-n',
+  templateUrl: './categoria-n.component.html',
+  styleUrls: ['./categoria-n.component.scss']
 })
-export class OptCategoriaNComponent implements OnInit {
-
- 
+export class CategoriaNComponent implements OnInit {
 
   @Input() flagStyle: boolean = false;
 
   _categoriaNs: CategoriaN[] | null = null;
+
+  private pathRoot: string = '../../assets/bg_img/';
+
+  public get  getUrl(){
+    return "background-image: url("+this.pathRoot + "img_1.webp" +");"
+
+  }
 
   //-------------------
   constructor(
@@ -57,5 +62,4 @@ export class OptCategoriaNComponent implements OnInit {
   }
 }
 //------------------------------
-
 

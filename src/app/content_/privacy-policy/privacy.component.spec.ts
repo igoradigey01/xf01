@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OptCategoriaNComponent } from './opt-categoria-n.component';
+import { PrivacyComponent } from './privacy.component';
 
-describe('OptCategoriaNComponent', () => {
-  let component: OptCategoriaNComponent;
-  let fixture: ComponentFixture<OptCategoriaNComponent>;
+describe('PrivacyComponent', () => {
+  let component: PrivacyComponent;
+  let fixture: ComponentFixture<PrivacyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OptCategoriaNComponent ]
+      declarations: [ PrivacyComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OptCategoriaNComponent);
+    fixture = TestBed.createComponent(PrivacyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

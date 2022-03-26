@@ -20,7 +20,7 @@ export interface DtoCategoriaN {
 export class CategoriaNItemComponent implements OnInit {
 
   @Output() public _onChangeStateView = new EventEmitter<StateView>();
-  @Output() public _onKatalogChange = new EventEmitter<DtoCategoriaN>();
+  @Output() public _onCategoriaNChange = new EventEmitter<DtoCategoriaN>();
   @Input() public _select_categoriaN: CategoriaN| undefined;
   @Input() public _flagViewState: StateView | undefined;
 
@@ -89,7 +89,7 @@ export class CategoriaNItemComponent implements OnInit {
               this._errorMgs = [];
               this._flagError = false;
               let d=  <CategoriaN>   data.body
-                 this._onKatalogChange.emit(
+                 this._onCategoriaNChange.emit(
                    <DtoCategoriaN>{ categoriaN:d,
                     flagViewState:StateView.create
                    }
@@ -149,7 +149,7 @@ export class CategoriaNItemComponent implements OnInit {
               this._flagError = false;
               //03.02.22
               let d=  <CategoriaN>   data.body
-              this._onKatalogChange.emit(
+              this._onCategoriaNChange.emit(
                 <DtoCategoriaN>{ categoriaN:d,
                  flagViewState:StateView.edit
                 }
@@ -211,7 +211,7 @@ export class CategoriaNItemComponent implements OnInit {
             this._errorMgs = [];
             this._flagError = false;
          //   let d=  <Katalog>   data.body
-            this._onKatalogChange.emit(
+            this._onCategoriaNChange.emit(
               <DtoCategoriaN>{ categoriaN:this._select_categoriaN, //21.03.22
                flagViewState:StateView.delete
               }
