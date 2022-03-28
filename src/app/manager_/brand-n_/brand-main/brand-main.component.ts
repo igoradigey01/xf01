@@ -57,7 +57,7 @@ public  onChangedBrandN(event:DtoBarndN){
 
   }
 
-  changeCategoriaN(item: Brand) {
+  changeBrandN(item: Brand) {
    // debugger
       this._select_brandN = item;
 

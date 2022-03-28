@@ -1,11 +1,11 @@
-<p>brand-item works!</p>
+
 <div class="_contaner">
   <div *ngIf="!_flag_sendServerData; else elseSendData">
     <!-- begin edit  card ------------------------------------->
     <form #myForm="ngForm" novalidate>
       <div class="item-form">
         <div class="_input-group" *ngIf="_select_brandN">
-          <label for="nameKatalog">Название Категории</label> <br />
+          <label for="nameKatalog">Название Бренда</label> <br />
           <mat-form-field class="_input-name" appearance="fill">
             <mat-label>ID( {{ _select_brandN.id }}) </mat-label>
             <div>
@@ -46,7 +46,7 @@
 
 
 
-       
+
 
         <!-----    ----------------- button gurop start           -->
         <div class="btn-group" role="group">

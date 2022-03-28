@@ -27,12 +27,14 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+   // debugger
   let sub1=  this.userManager.InvalidLogin$.subscribe(
       d => {
         this._invalidLogin = d;
         this._isAdmin = this.userManager.IsAdmin;
         this._isManager = this.userManager.IsManager;
         this._isShopper = this.userManager.IsShopper;
+        console.log("menu conctructor -- userManager.InvalidLogin$--"+ d);
       }
     )
 

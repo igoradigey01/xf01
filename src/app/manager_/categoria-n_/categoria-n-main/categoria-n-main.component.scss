@@ -65,7 +65,7 @@
 .grid-container .active {
   background-color:   #a1ff6b1c;
 }
-@media (min-width: 650px) {
+@media (min-width: 750px) {
 
 
 
@@ -91,7 +91,7 @@
 @media (min-width: 960px) {
   .grid-container {
     display: grid;
-    width: 70%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
     grid-template-columns: 1fr 1fr;
@@ -111,7 +111,7 @@
 @media (min-width: 1200px) {
   .grid-container {
     display: grid;
-    width: 50%;
+    width: 65%;
     margin-left: auto;
     margin-right: auto;
     grid-template-columns: 1fr 1fr;

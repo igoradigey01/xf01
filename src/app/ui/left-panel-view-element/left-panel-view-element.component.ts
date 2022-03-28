@@ -20,8 +20,8 @@ export class LeftPanelViewElementComponent implements OnInit {
   @Input() public _router_link: string = '';
   @Input()  public _flagViewState: StateView = StateView.default;
   @Output() _onChangedViewMode = new EventEmitter<StateView>();
-  @Output() _onChangedKatalog = new EventEmitter<KatalogUI>();
-  public _selectedKagalog: KatalogUI = <KatalogUI>{ id: -1, name: '' };
+  @Output() _onChangedKatalogUI = new EventEmitter<KatalogUI>();
+  public _selectedKagalogUI: KatalogUI = <KatalogUI>{ id: -1, name: '' };
   @Input() public _katalogs: KatalogUI[] | null = null;
   public _flagStyle: boolean = false;
 
@@ -36,8 +36,8 @@ export class LeftPanelViewElementComponent implements OnInit {
 
   public onChecks(item: KatalogUI) {
     this._flagStyle = true;
-    this._selectedKagalog = item;
-    this._onChangedKatalog.emit(item)
+    this._selectedKagalogUI = item;
+    this._onChangedKatalogUI.emit(item)
     // if(this._sidenav) this._sidenav.close();
   }
 }

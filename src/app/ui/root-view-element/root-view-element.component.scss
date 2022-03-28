@@ -1,5 +1,10 @@
 @import "./../../../styles/manager-styles.scss";
 
+.error{
+  color: var(--bs-pink);
+  text-align: center;
+}
+
 .grid-container-menu {
   display: grid;
   width: 100%;

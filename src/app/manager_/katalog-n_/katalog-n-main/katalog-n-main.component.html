@@ -3,7 +3,7 @@
  [_katalogs]="_categoriaNs"
  [_router_link]="_router_link"
  [_modul_name]="_modul_name"
- (_onChangedKatalog)="onChangedCategoriaN($event)"
+ (_onChangedKatalogUI)="onChangedCategoriaN($event)"
  (_onChangedViewMode)="onChangedViewMode($event)"
 >
 
@@ -14,7 +14,7 @@
 <div [ngSwitch]="_flagViewState">
   <ng-template ngSwitchDefault>
     <div class="container-fluid">
-      <h4>  Категории Позиции</h4>
+      <h4>  Каталог Позиции</h4>
       <div class="grid-container">
         <button
           *ngFor="let item of _katalogNs"

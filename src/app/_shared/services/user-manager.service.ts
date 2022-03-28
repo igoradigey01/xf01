@@ -11,6 +11,7 @@ export class UserManagerService {
   private isManager: boolean = false; // 03.10.21
   private isShopper: boolean = false; // role -покупатель(клиент)
   // private isShopperOpt:boolean=false; // оптовый покупатель(реализатор?)
+  //private _isTokenTimeValid=false;
 
   private readonly _var_opt_shopper: string = 'opt_var';
 
@@ -23,6 +24,10 @@ export class UserManagerService {
 
   constructor(private _tokenService: TokenService) {}
 
+  public get InvalidTimeAccess_token$(): BehaviorSubject<boolean> {
+    return this._tokenService.InvalidTimeAccess_token$;
+  }
+
   /** Client subscribe() for var_opt_shopper chenged; !! ngOnDestroy()-- unsubscribe !!  */
   public get FlagShopperOpt$(): BehaviorSubject<boolean> {
     return this._flagOptVar$;
@@ -31,10 +36,9 @@ export class UserManagerService {
   public setFlagShopperOpt$(i: boolean) {
     this._flagOptVar$.next(i);
   }
-
-  public setVarShopperOpt(){
-    localStorage.setItem(this._var_opt_shopper,'opt-1');
-
+  // оптовый покупатель(реализатор?)
+  public setVarShopperOpt() {
+    localStorage.setItem(this._var_opt_shopper, 'opt-1');
   }
 
   public clearVarShopperOpt(): void {
@@ -47,6 +51,7 @@ export class UserManagerService {
   }
   /** set value for  _invalidLogin ; defauld -- true */
   public setInvalidLogin$(i: boolean) {
+  //  console.log(' UserManagerService -- setInvalidLogin$ --' + i);
     this._invalidLogin$.next(i);
   }
 
@@ -60,7 +65,7 @@ export class UserManagerService {
   public get IsManager(): boolean {
     // throw new Error("not impliment exeption");
 
-    if (this.Role === 'manager'||this.Role==='furniture') {
+    if (this.Role === 'manager' || this.Role === 'furniture') {
       return true;
     }
     return false;
@@ -72,11 +77,11 @@ export class UserManagerService {
     }
     return false;
   }
-   /** это реализатор */
-   public get IsShopperOpt(): boolean {
+  /** это реализатор */
+  public get IsShopperOpt(): boolean {
     let opt_var = localStorage.getItem(this._var_opt_shopper);
 
-     //debugger
+    //debugger
     if (opt_var && opt_var === 'opt-1') {
       return true;
     }
@@ -86,10 +91,6 @@ export class UserManagerService {
   public get Exists(): boolean {
     return this._tokenService.Exists;
   }
-
-
-
-
 
   private get Role() {
     return this._tokenService.Role;

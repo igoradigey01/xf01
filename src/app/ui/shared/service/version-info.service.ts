@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { ManagerServiceModule } from '../../../manager_/shared/services/maneger-service.module';
-import { VersionInfo} from 'src/app/_shared/_interfaces/vertion-info.model';
+import { VersionInfo} from 'src/app/ui/shared/_interfaces/vertion-info.model';
 import { TokenService } from 'src/app/_shared/services/token.service';
 import { RouteApiService } from 'src/app/_shared/services/route-api.service';
 import { environment } from 'src/environments/environment';

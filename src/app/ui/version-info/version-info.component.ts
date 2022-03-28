@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {VersionInfo} from 'src/app/_shared/_interfaces/vertion-info.model'
+import {VersionInfo} from 'src/app/ui/shared/_interfaces/vertion-info.model'
 import {VersionInfoService} from '../shared/service/version-info.service';
 
 @Component({
