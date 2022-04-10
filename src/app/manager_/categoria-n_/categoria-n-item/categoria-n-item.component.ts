@@ -45,7 +45,7 @@ export class CategoriaNItemComponent implements OnInit {
   constructor(
     private _repository:CategoriaNService
   ) {
-    this._select_categoriaN=<CategoriaN>{id:-1,name:'',roleF:true,roleT:false,hidden:false,link:'',flag_href:false,flag_link:false}
+    this._select_categoriaN=<CategoriaN>{id:-1,name:'',postavchikId:-1,hidden:false,link:'',flag_href:false,flag_link:false}
     //<CategoriaN>{id:-1,name:'',roleF:true,roleT:false, flag_href:false,flag_link:false,hidden:false,decriptSEO:'',link:false}
    }
 

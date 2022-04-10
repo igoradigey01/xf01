@@ -26,7 +26,8 @@ export class KatalogNMainComponent implements OnInit {
   public _router_link: string = '/manager';
   public _flagViewState: StateView = StateView.default;
 
-  constructor(private _repository: KatalogNService) {}
+  constructor(
+    private _repository: KatalogNService) {}
 
   ngOnInit(): void {
     this.loadCategoriaNs();
@@ -63,7 +64,7 @@ export class KatalogNMainComponent implements OnInit {
     this._flagViewState = StateView.default;
     this._selected_categoriaN_ID = event.id;
     this._selected_categoriaN_Name = event.name;
-    this._repository.Katalogs(event.id).subscribe((d) => {
+    this._repository.KatalogNs(event.id).subscribe((d) => {
       this._katalogNs = d;
 
       // console.log('onChangedCategoriaN');

@@ -18,7 +18,8 @@ export class CategoriaNService {
 
   public CategoriaNs = (): Observable<CategoriaN[]> => {
     this.url.Controller = 'CategoriaN';
-    this.url.Action = 'GetRoleF';
+    this.url.Action = 'GetPostavchik';
+    this.url.ID=this.url.PostavchikId;
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,

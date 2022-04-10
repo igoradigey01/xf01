@@ -1,7 +1,7 @@
 export enum StateView {
-  init,
   default,
-  editTable,
+  init,
+  table,
   edit,
   create,
   wait,

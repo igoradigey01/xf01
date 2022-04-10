@@ -22,7 +22,7 @@ export class LeftPanelViewElementComponent implements OnInit {
   @Output() _onChangedViewMode = new EventEmitter<StateView>();
   @Output() _onChangedKatalogUI = new EventEmitter<KatalogUI>();
   public _selectedKagalogUI: KatalogUI = <KatalogUI>{ id: -1, name: '' };
-  @Input() public _katalogs: KatalogUI[] | null = null;
+  @Input() public _katalogUIs: KatalogUI[] =[];
   public _flagStyle: boolean = false;
 
   constructor(public breakpointObserver: BreakpointObserver) {}

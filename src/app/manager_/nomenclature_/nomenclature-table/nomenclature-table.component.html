@@ -1,1 +1,65 @@
 <p>nomenclature-table works!</p>
+
+
+
+<div class="grid-sub-container-ms grid-sub-container">
+  <div>id</div>
+  <div>Name</div>
+  <div>Price</div>
+  <div class="hiden-description">descripstion</div>
+  <div>images</div>
+
+  <!-- start model view-->
+  <ng-template ngFor let-nomenclature [ngForOf]="_nomenclatures" let-i="index">
+    <div
+      [ngClass]="{ 'row-grid': i % 2 == 0 }"
+      (click)="changeProduct(nomenclature)"
+    >
+      {{ nomenclature.id }}
+    </div>
+
+    <div
+      [ngClass]="{ 'row-grid': i % 2 == 0 }"
+      (click)="changeProduct(nomenclature)"
+    >
+      {{ nomenclature.name }}
+    </div>
+    <div
+      [ngClass]="{ 'row-grid': i % 2 == 0 }"
+      (click)="changeProduct(nomenclature)"
+    >
+      {{ nomenclature.price }}
+    </div>
+    <div
+      class="hiden-description"
+      [ngClass]="{ 'row-grid': i % 2 == 0 }"
+      (click)="changeProduct(nomenclature)"
+    >
+      {{ nomenclature.description }}
+    </div>
+
+    <div
+      [ngClass]="{ 'row-grid': i % 2 == 0 }"
+      *ngIf="nomenclature.guid"
+    >
+      <!---    start -->
+
+      <div *ngIf="!nomenclature.wwwrootOK;else changedWebp">
+        <img height="38"  src="{{nomenclature.wwwroot }}S{{ nomenclature.guid }}.webp" />
+    </div>
+
+    <ng-template #changedWebp>
+      <img height="38"  src="{{nomenclature.imageWebp}}" />
+    </ng-template>
+
+      <!--   endt -->
+    </div>
+
+
+
+    <!-- end  model view-->
+  </ng-template>
+</div>
+
+<!----------------- create end-->
+

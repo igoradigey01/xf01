@@ -27,6 +27,7 @@ export class RootViewElementComponent implements OnInit {
 
   @Input() public _modul_name:string=""
   @Input() public _router_link:string="";
+  @Input() public _flagAddButton=true;
 
   @Output() onChangedViewMode = new EventEmitter<StateView>();
   @Output() onClickKatalogUI=new EventEmitter();
@@ -78,9 +79,14 @@ export class RootViewElementComponent implements OnInit {
   }
 
   public get DistplayButton():boolean{
-    if(this._flagViewState==StateView.create)return true;
-    return this._flagViewState==StateView.default?true:false;
+    if((this._flagViewState==StateView.create)&&this._flagAddButton)
+    return true;
+    if((this._flagViewState==StateView.default)&&this._flagAddButton)
+    return true;
+    return false;
   }
+
+
 
   private routedLogins(){
     this.router.navigate(['/account']);

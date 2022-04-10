@@ -64,6 +64,7 @@ export class SignInComponent implements OnInit {
 
     this._accountServie.login(credentials).subscribe(
       (next) => {
+      //  debugger
         this._userManager.setInvalidLogin$(false);
         this._flagButoon = true;
         /* if (this.tokenService.IsAdmin()) {

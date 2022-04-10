@@ -1,11 +1,12 @@
-export interface CategoriaN {
+import {UI} from './ui.mondel'
+
+export interface CategoriaN extends UI {
   id: number;
   name: string;
-  roleF:boolean;
-  roleT:boolean;
   flag_link:boolean;
   flag_href:boolean;
   link:string|undefined;
   hidden:boolean;
   decriptSEO: string;
+  postavchikId:number
 }

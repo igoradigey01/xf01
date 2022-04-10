@@ -9,6 +9,7 @@ import { RootViewElementComponent } from './root-view-element/root-view-element.
 import { LeftPanelViewElementComponent } from './left-panel-view-element/left-panel-view-element.component';
 import { ImgRenderComponent } from './img-render/img-render.component';
 import { VersionInfoComponent } from './version-info/version-info.component';
+import { QrCodeComponent } from './qr-code/qr-code.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { VersionInfoComponent } from './version-info/version-info.component';
     LeftPanelViewElementComponent,
     ImgRenderComponent,
     VersionInfoComponent,
+    QrCodeComponent,
   ],
   imports: [
     CommonModule,

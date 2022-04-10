@@ -5,8 +5,9 @@ export const environment = {
   serverRoot:'https://s.x-01.ru/',
   serverAuthority:'https://s.x-01.ru/',
   clientId:'angular-client',
+  postavchikId:'1',
   version:'b1.02.22',
-  description:"Client shop- вторая редакция (angular:13.1.2)(26.03.22)",
+  description:"Client shop- вторая редакция (angular:13.1.2)(3.04.22)",
 
 
 };

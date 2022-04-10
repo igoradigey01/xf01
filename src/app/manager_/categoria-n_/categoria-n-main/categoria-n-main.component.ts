@@ -35,7 +35,7 @@ public  onChangeStateView(event:StateView){
  // debugger
     this._flagViewState = event;
     if (this._flagViewState == StateView.create) {
-      this._select_categoriaN = <CategoriaN>{ id: -1, name: '', roleF:true,roleT:false,link:'',flag_href:false,flag_link:false,hidden:false };
+      this._select_categoriaN = <CategoriaN>{ id: -1, name: '', postavchikId:-1,link:'',flag_href:false,flag_link:false,hidden:false };
     }
 
   }

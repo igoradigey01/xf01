@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
 import { AccoutServiceModule } from './accout-service.module';
 
 import { TokenService } from 'src/app/_shared/services/token.service';
-import { TokenModel } from 'src/app/_shared/_interfaces/token-model';
+import { TokenModel } from 'src/app/_shared/_interfaces/token.model';
 import { RouteApiService } from 'src/app/_shared/services/route-api.service';
 import { RegistrationResponseDto } from '../_interfaces/registration-responseDto.model';
 import { UserRegistrationDto } from '../_interfaces/user-registrationDto.model';
@@ -32,9 +32,10 @@ export class AccountService {
 
   /** Get token login pass */
   public login = (credentials: string): Observable<any> => {
-
+ // debugger
     this.url.Controller = this._controller;
     this.url.Action = this._action;
+    this.url.ID=null;
 
     //  console.log('login-credentials = '+credentials);
     return this.http

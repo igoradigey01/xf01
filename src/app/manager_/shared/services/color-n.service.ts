@@ -29,8 +29,9 @@ export class ColorNService {
 
 
   public ColorNs = (): Observable<Color[]> => {
-    this._url.Controller = 'Color';
-    this._url.Action = 'get';
+    this._url.Controller = 'ColorN';
+    this._url.Action = 'getPostavchik';
+    this._url.ID=this._url.PostavchikId;
 
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -47,8 +48,9 @@ export class ColorNService {
 
   public Create = (item:Color): Observable<any> => {
 
-    this._url.Controller = 'Color';
+    this._url.Controller = 'ColorN';
     this._url.Action = 'Create';
+    this._url.ID=null;
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       Authorization: 'Bearer ' + this._token.AccessToken,
@@ -56,7 +58,7 @@ export class ColorNService {
 
     let fd = this.createFormData(item);
 
-    new Response(fd).text().then(console.log);
+   // new Response(fd).text().then(console.log);
 
     return this._http.post(this._url.Url, fd,{
       reportProgress: true,
@@ -69,8 +71,9 @@ export class ColorNService {
 
   public Update = (item: Color): Observable<any> => {
    // throw new Error("not implemint exeption");
-   this._url.Controller = 'Color';
+   this._url.Controller = 'ColorN';
    this._url.Action = 'Update';
+   this._url.ID=item.id;
  //  debugger
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -78,8 +81,8 @@ export class ColorNService {
     });
     let fd = this.createFormData(item);
 
-    new Response(fd).text().then(console.log);
-    return this._http.put(this._url.Url+'/'+item.id, fd,{
+   // new Response(fd).text().then(console.log);
+    return this._http.put(this._url.Url, fd,{
       reportProgress: true,
       observe: 'events',
       headers,
@@ -90,14 +93,15 @@ export class ColorNService {
   public Delete = (id: number): Observable<any> => {
     this._url.Controller = 'Color';
     this._url.Action = 'delete';
+    this._url.ID=id;
 
 
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       Authorization: 'Bearer ' + this._token.AccessToken,
     });
-    let url: string = this._url.Url+'/'+id;
-    return this._http.delete(url,{
+  // let url: string = this._url.Url+'/'+id;
+    return this._http.delete(this._url.Url,{
       reportProgress: true,
       observe: 'events',
       headers,

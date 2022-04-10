@@ -10,39 +10,42 @@ import { ImgManagerService } from 'src/app/_shared/services/img-manager.service'
 import { DtoNomenclature } from '../nomenclature-item/nomenclature-item.component';
 import { KatalogUI } from 'src/app/ui/shared/_interfaces/katalog.model';
 import { CategoriaN } from 'src/app/_shared/_interfaces/categoria-n.model';
-import {DtoCategoriaN} from './../../categoria-n_/categoria-n-item/categoria-n-item.component'
-
+import { Input, Output, EventEmitter } from '@angular/core';
 @Component({
-  selector: 'app-nomenclature-main',
-  templateUrl: './nomenclature-main.component.html',
-  styleUrls: ['./nomenclature-main.component.scss'],
+  selector: 'app-nomenclature-katalog',
+  templateUrl: './nomenclature-katalog.component.html',
+  styleUrls: ['./nomenclature-katalog.component.scss']
 })
-export class NomenclatureMainComponent implements OnInit {
-  public _nomenclatures: Nomenclature[] = [];
-  public _katalogUIs: KatalogUI[]=[];
-  public _categoriaNs:CategoriaN[]=[];
-  public _katalogNs: KatalogN[] = [];
-  public _articles: Article[] = [];
-  public _colors: Color[] = [];
-  public _brands: Brand[] = [];
-  public  _select_CategoriaN_id:number=-1;
-  public _select_CategoriaN_name:string='';
+export class NomenclatureKatalogComponent implements OnInit {
+
+
+   public _nomenclatures: Nomenclature[] = [];
+   public _katalogUIs: KatalogUI[]=[];
+   public _flagViewState:StateView=StateView.table;
+
+   @Input() public _katalogNs: KatalogN[] = [];
+   @Input() public _articles: Article[] = [];
+  @Input() public _colors: Color[] = [];
+  @Input() public _brands: Brand[] = [];
+  @Input() public  _select_CategoriaN_id:number=-1;
+  @Input()  public _select_CategoriaN_name:string='';
+  @Input()  public _flagViewMode: StateView = StateView.default;
+  @Output() _onChangedViewMode = new EventEmitter<StateView>();
+  @Output() _onChangedKatalogUI = new EventEmitter<KatalogUI>();
 
   public _select_KatalogN: KatalogN = <KatalogN>{
     id: -1,
     name: '',
     hidden: false,
   };
-
-  public _select_Nomenclature:Nomenclature;
   public _modul_name: string = '(менеджер)';
   public _router_link: string = '/manager';
-  public _flagViewState: StateView = StateView.default;
+
 
   //--------------------------
 
-  public _wwwroot: string = '';
-
+  public _root_url_img: string = '';
+  public _select_Nomenclature: Nomenclature;
 
   /** this new version product view */
   constructor(
@@ -66,18 +69,6 @@ export class NomenclatureMainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._repository.CategoriaNs().subscribe((data) => {
-      this._categoriaNs = data;
-    });
-    this._repository.ArticleNs().subscribe((data) => {
-      this._articles = data;
-    });
-    this._repository.ColorNs().subscribe((data) => {
-      this._colors = data;
-    });
-    this._repository.BrandNs().subscribe((data) => {
-      this._brands = data;
-    });
 
 
 
@@ -96,8 +87,8 @@ export class NomenclatureMainComponent implements OnInit {
 
   public onChangedViewMode(event: StateView) {
     // debugger
-    this._flagViewState = event;
-    if (this._flagViewState == StateView.create) {
+    this._flagViewMode = event;
+    if (this._flagViewMode == StateView.create) {
       this._select_Nomenclature =  <Nomenclature>{
         id: -1,
         name: '',
@@ -116,7 +107,7 @@ export class NomenclatureMainComponent implements OnInit {
   }
 
   public onChangedKatalogUI(event: KatalogUI) {
-    this._flagViewState = StateView.default;
+    this._flagViewMode = StateView.default;
     this._select_KatalogN.id = event.id;
     this._select_KatalogN.name=event.name;
     this._repository
@@ -128,16 +119,36 @@ export class NomenclatureMainComponent implements OnInit {
       });
   }
 
-  public onChangeCategoriaN_UI(event:DtoCategoriaN) {
+  public onChangeEditNomenrlatureUI(event: Nomenclature) {
+    this._select_Nomenclature = event;
     //  debugger
-    this._select_CategoriaN_id = event.categoriaN.id;
-    this._select_CategoriaN_name=event.categoriaN.name;
-    this._repository.KatalogNs(this._select_CategoriaN_id).subscribe(
-      d=>{this._katalogNs=d;}
-    )
-    this._flagViewState=event.flagViewState;
 
+    if (this._select_KatalogN.id == this._select_Nomenclature.katalogId) {
+      this._select_Nomenclature.katalogName = this._select_KatalogN.name;
+      this._select_Nomenclature.rootStrImg = this._repository.RootSrcImg;
+    } else {
+      throw new Error('this._selectKatalog.id!=this._select_Product.katalogId');
+      // console.log('onChangeRow--' + event.name);
+    }
+    let itemA = this._articles.find(
+      (x) => x.id == this._select_Nomenclature.articleId
+    );
+    this._select_Nomenclature.articleName =itemA ? itemA.name : '';
+
+    let itemC = this._colors.find(
+      (d) => d.id == this._select_Nomenclature.colorId
+    );
+    this._select_Nomenclature.colorName = itemC ? itemC.name : '' ;
+
+   let itemB=this._brands.find(d=>d.id==this._select_Nomenclature.brandId);
+   this._select_Nomenclature.brandName=itemB ? itemB.name : '';
+
+    this._flagViewMode = StateView.edit;
   }
-  
+  public onBackInKagegorias(){
+    this. _onChangedViewMode.next(StateView.default);
+  }
+
+
 
 }

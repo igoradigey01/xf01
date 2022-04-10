@@ -30,8 +30,8 @@ export class CategoriaNService {
 
   public CategoriaNs = (): Observable<CategoriaN[]> => {
     this._url.Controller = 'CategoriaN';
-    this._url.Action = 'get';
-
+    this._url.Action = 'getPostavchik';
+    this._url.ID=this._url.PostavchikId;
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
        Authorization: 'Bearer ' + this._token.AccessToken,
@@ -49,6 +49,8 @@ export class CategoriaNService {
 
     this._url.Controller = 'CategoriaN';
     this._url.Action = 'Create';
+    this._url.ID=null;
+    item.postavchikId=this._url.PostavchikId;
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       Authorization: 'Bearer ' + this._token.AccessToken,
@@ -71,6 +73,8 @@ export class CategoriaNService {
    // throw new Error("not implemint exeption");
    this._url.Controller = 'CategoriaN';
    this._url.Action = 'Update';
+   this._url.ID=item.id;
+   item.postavchikId=this._url.PostavchikId;
  //  debugger
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -79,7 +83,7 @@ export class CategoriaNService {
     let fd = this.createFormData(item);
 
     new Response(fd).text().then(console.log);
-    return this._http.put(this._url.Url+'/'+item.id, fd,{
+    return this._http.put(this._url.Url, fd,{
       reportProgress: true,
       observe: 'events',
       headers,
@@ -90,14 +94,15 @@ export class CategoriaNService {
   public Delete = (id: number): Observable<any> => {
     this._url.Controller = 'CategoriaN';
     this._url.Action = 'delete';
+    this._url.ID=id;
 
 
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       Authorization: 'Bearer ' + this._token.AccessToken,
     });
-    let url: string = this._url.Url+'/'+id;
-    return this._http.delete(url,{
+    //let url: string = this._url.Url+'/'+id;
+    return this._http.delete(this._url.Url,{
       reportProgress: true,
       observe: 'events',
       headers,

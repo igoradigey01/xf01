@@ -23,6 +23,7 @@ export class VersionInfoService {
 
     this.url.Controller = 'Version';
     this.url.Action='info'
+    this.url.ID=null;
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,

@@ -7,18 +7,18 @@
     <form #myForm="ngForm" novalidate>
       <div class="item-form">
         <div class="_input-group" *ngIf="_select_KatalogN">
-          <label for="nameCategoria">Название Категории</label> <br />
+          <label for="nameKatalogN">Название Категории</label> <br />
           <mat-form-field class="_input-name" appearance="fill">
             <mat-label  >ID(  {{ _select_KatalogN.id }}) </mat-label>
             <div>
               <input
                 matInput
-                name="nameCategoria"
-                #nameCategoria="ngModel"
+                name="nameKatalogN"
+                #nameKatalogN="ngModel"
                 [(ngModel)]="_select_KatalogN.name"
                 required
               />
-              <mat-error *ngIf="nameCategoria.invalid"> </mat-error>
+              <mat-error *ngIf="nameKatalogN.invalid"> </mat-error>
             </div>
           </mat-form-field>
         </div>

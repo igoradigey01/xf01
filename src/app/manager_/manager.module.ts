@@ -20,7 +20,9 @@ import { ArticleNMainComponent } from './article-n_/article-n-main/article-n-mai
 import { ArticleNItemComponent } from './article-n_/article-n-item/article-n-item.component';
 import { NomenclatureMainComponent } from './nomenclature_/nomenclature-main/nomenclature-main.component';
 import { NomenclatureTableComponent } from './nomenclature_/nomenclature-table/nomenclature-table.component';
-import { NomenclatureItemComponent } from './nomenclature_/nomenclature-item/nomenclature-item.component'
+import { NomenclatureItemComponent } from './nomenclature_/nomenclature-item/nomenclature-item.component';
+import { NomenclatureCategoriaComponent } from './nomenclature_/nomenclature-categoria/nomenclature-categoria.component';
+import { NomenclatureKatalogComponent } from './nomenclature_/nomenclature-katalog/nomenclature-katalog.component'
 
 
 
@@ -41,7 +43,9 @@ import { NomenclatureItemComponent } from './nomenclature_/nomenclature-item/nom
     NomenclatureTableComponent,
     NomenclatureItemComponent,
     CategoriaNMainComponent,
-    CategoriaNItemComponent
+    CategoriaNItemComponent,
+    NomenclatureCategoriaComponent,
+    NomenclatureKatalogComponent
 
   ],
   imports: [
