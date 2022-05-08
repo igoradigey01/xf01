@@ -1,6 +1,8 @@
 # Xf01
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.2.
+Client counterparty to Nomenclature for apiX01
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version  13.2.6.
 
 ## Development server
 
