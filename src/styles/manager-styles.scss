@@ -25,5 +25,17 @@
   background-color: #cdb6e8;  //#ffff00; // #e8d4de; //#eeeff1;
   align-self: flex-start;
 }
+.navigate{
+  display: flex;
+  justify-content: space-between;
 
+}
+.navigate-route{
+  color: #e66333;
+}
+.navigate-route-link{
+  color: var(--bs-blue);
+  text-decoration: underline;
+  cursor: pointer;
+}
 

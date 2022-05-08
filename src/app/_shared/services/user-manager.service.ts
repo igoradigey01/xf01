@@ -25,7 +25,7 @@ export class UserManagerService {
   constructor(private _tokenService: TokenService) {}
 
   public get InvalidTimeAccess_token$(): BehaviorSubject<boolean> {
-    return this._tokenService.InvalidTimeAccess_token$;
+    return this._tokenService.InvalidTimeAccess_token$; //отказ от реализации (ui/root-view-element)
   }
 
   /** Client subscribe() for var_opt_shopper chenged; !! ngOnDestroy()-- unsubscribe !!  */

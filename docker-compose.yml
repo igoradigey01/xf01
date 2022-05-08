@@ -9,3 +9,4 @@ services:
       - ./dist/xf01:/var/www/html
     ports:
      - "8080:8080"
+

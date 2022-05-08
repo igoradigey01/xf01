@@ -21,7 +21,7 @@ export class NomenclatureKatalogComponent implements OnInit {
 
    public _nomenclatures: Nomenclature[] = [];
    public _katalogUIs: KatalogUI[]=[];
-   public _flagViewState:StateView=StateView.table;
+  // public _flagViewState:StateView=StateView.table;
 
    @Input() public _katalogNs: KatalogN[] = [];
    @Input() public _articles: Article[] = [];
@@ -29,8 +29,8 @@ export class NomenclatureKatalogComponent implements OnInit {
   @Input() public _brands: Brand[] = [];
   @Input() public  _select_CategoriaN_id:number=-1;
   @Input()  public _select_CategoriaN_name:string='';
-  @Input()  public _flagViewMode: StateView = StateView.default;
-  @Output() _onChangedViewMode = new EventEmitter<StateView>();
+  @Input()  public _flagViewState: StateView = StateView.default;
+  @Output() _onChangedViewModeNK = new EventEmitter<StateView>();
   @Output() _onChangedKatalogUI = new EventEmitter<KatalogUI>();
 
   public _select_KatalogN: KatalogN = <KatalogN>{
@@ -40,6 +40,7 @@ export class NomenclatureKatalogComponent implements OnInit {
   };
   public _modul_name: string = '(менеджер)';
   public _router_link: string = '/manager';
+  @Input() public _flagAddButton:boolean=false;
 
 
   //--------------------------
@@ -87,8 +88,9 @@ export class NomenclatureKatalogComponent implements OnInit {
 
   public onChangedViewMode(event: StateView) {
     // debugger
-    this._flagViewMode = event;
-    if (this._flagViewMode == StateView.create) {
+    this._flagViewState = event;
+  //  this._onChangedViewModeNK.next(this._flagViewState)
+    if (this._flagViewState == StateView.create) {
       this._select_Nomenclature =  <Nomenclature>{
         id: -1,
         name: '',
@@ -107,7 +109,8 @@ export class NomenclatureKatalogComponent implements OnInit {
   }
 
   public onChangedKatalogUI(event: KatalogUI) {
-    this._flagViewMode = StateView.default;
+    this._flagViewState = StateView.default;
+    this._flagAddButton=true;
     this._select_KatalogN.id = event.id;
     this._select_KatalogN.name=event.name;
     this._repository
@@ -121,11 +124,11 @@ export class NomenclatureKatalogComponent implements OnInit {
 
   public onChangeEditNomenrlatureUI(event: Nomenclature) {
     this._select_Nomenclature = event;
-    //  debugger
+    // debugger
 
     if (this._select_KatalogN.id == this._select_Nomenclature.katalogId) {
       this._select_Nomenclature.katalogName = this._select_KatalogN.name;
-      this._select_Nomenclature.rootStrImg = this._repository.RootSrcImg;
+     // this._select_Nomenclature.wwwroot = this._repository.WWWroot;
     } else {
       throw new Error('this._selectKatalog.id!=this._select_Product.katalogId');
       // console.log('onChangeRow--' + event.name);
@@ -142,11 +145,15 @@ export class NomenclatureKatalogComponent implements OnInit {
 
    let itemB=this._brands.find(d=>d.id==this._select_Nomenclature.brandId);
    this._select_Nomenclature.brandName=itemB ? itemB.name : '';
+     this._select_Nomenclature.articleName=itemA?.name;
+     this._select_Nomenclature.brandName=itemB?.name;
+     this._select_Nomenclature.colorName=itemC?.name;
 
-    this._flagViewMode = StateView.edit;
+    this._flagViewState = StateView.edit;
   }
   public onBackInKagegorias(){
-    this. _onChangedViewMode.next(StateView.default);
+  //  debugger
+    this. _onChangedViewModeNK.next(StateView.default);
   }
 
 

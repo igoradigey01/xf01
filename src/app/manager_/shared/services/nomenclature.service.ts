@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-
+import { map} from 'rxjs/operators';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Nomenclature} from 'src/app/_shared/_interfaces/nomenclature.model';
 import { KatalogN } from 'src/app/_shared/_interfaces/katalog-n.model';
 import { Article } from 'src/app/_shared/_interfaces/article.model';
@@ -18,6 +18,7 @@ import {ColorNService} from './color-n.service'
 import { RouteApiService } from 'src/app/_shared/services/route-api.service';
 import { TokenService } from 'src/app/_shared/services/token.service';
 import { CategoriaN } from 'src/app/_shared/_interfaces/categoria-n.model';
+import {PriceN} from './../_interfaces/price-n.model'
 
 enum FlagSendData {
   all,
@@ -34,10 +35,10 @@ export class NomenclatureService {
   _nameKatalog: any = '';
   //readonly _url:string="Type";
 
-  get RootSrcImg(): string {
+  get WWWroot(): string {
     // return this.http.get(src,{responseType: 'blob'});
 
-    return this._url.RootImage; //environment.serverRoot + 'images/';
+    return this._url.WWWroot; //environment.serverRoot + 'images/';
   }
 
   constructor(
@@ -83,7 +84,7 @@ export class NomenclatureService {
   /**Postavchik + Katalog get Nomenclature*/
   public NomenclaturePKs = (idKatlaog:number): Observable<Nomenclature[]> => {
     this._url.Controller = 'Nomenclature';
-    this._url.Action = 'getPostavchik';
+    this._url.Action = 'NomenclaturePKs';
     this._url.ID=idKatlaog;
 
 
@@ -94,7 +95,32 @@ export class NomenclatureService {
     let params:HttpParams=new HttpParams().set('postavchikId',this._url.PostavchikId)
 
     const httpOptions={headers,params}
-    return this._http.get<Nomenclature[]>(this._url.Url, httpOptions);
+    return this._http.get<Nomenclature[]>(this._url.Url, httpOptions) .pipe(
+      map((data: any) => {
+        //  console.log(JSON.stringify(data))
+        return data.map((f: any) => {
+          return <Nomenclature>{
+            id:f.id,
+            articleId:f. articleId,
+            brandId:f.brandId,
+            colorId:f.colorId,
+            description:f.description,
+            guid:f.guid,
+            hidden:f.hidden,
+            inStock:f.inStock,
+            sale:f.sale,
+            katalogId:f.katalogId,
+            markup:f.markup,
+            postavchikId:f.postavchikId,
+            name:f.name,
+            position:f.position,
+            price:f.price,
+
+            wwwroot: this._url.WWWroot,
+          };
+        });
+      })
+    );
   };
 
 
@@ -124,13 +150,40 @@ export class NomenclatureService {
    /**pastavchik get Nomenclature */
   public NomenclaturePs = (): Observable<Nomenclature[]> => {
     this._url.Controller = 'Nomenclature';
-    this._url.Action = 'GetNomenclaturePs';
+    this._url.Action = 'NomenclaturePs';
     this._url.ID=this._url.PostavchikId;
+   // debugger
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
-    return this._http.get<Nomenclature[]>(this._url.Url, { headers });
+    return this._http.get<Nomenclature[]>(this._url.Url, { headers })
+    .pipe(
+      map((data: any) => {
+        //  console.log(JSON.stringify(data))
+        return data.map((f: any) => {
+          return <Nomenclature>{
+            id:f.id,
+            articleId:f. articleId,
+            brandId:f.brandId,
+            colorId:f.colorId,
+            description:f.description,
+            guid:f.guid,
+            hidden:f.hidden,
+            inStock:f.inStokc,
+            sale:f.sale,
+            katalogId:f.katalogId,
+            markup:f.markup,
+            postavchikId:f.postavchikId,
+            name:f.name,
+            position:f.position,
+            price:f.price,
+
+            wwwroot: this._url.WWWroot,
+          };
+        });
+      })
+    );
   };
 
   //---------------
@@ -140,6 +193,7 @@ export class NomenclatureService {
     this._url.Controller = 'Nomenclature';
     this._url.Action = 'Create'; //Post
     this._url.ID=null;
+    item.postavchikId=this._url.PostavchikId;
     // debugger
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -153,7 +207,8 @@ export class NomenclatureService {
       reportProgress: true,
       observe: 'events',
       headers,
-    });
+    })
+
 
     // return this._http.post(this._url.Url, fd, { headers },);
   };
@@ -165,7 +220,7 @@ export class NomenclatureService {
     // debugger
     this._url.Controller = 'Nomenclature';
     this._url.Action = 'UpdateAll';
-    this._url.ID=null;
+    this._url.ID=item.id;
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       Authorization: 'Bearer ' + this._token.AccessToken,
@@ -175,12 +230,33 @@ export class NomenclatureService {
 
   //!!!!  new Response(fd).text().then(console.log);
 
-    return this._http.put(this._url.Url + '/' + item.id, fd, {
+    return this._http.put(this._url.Url , fd, {
       reportProgress: true,
       observe: 'events',
       headers,
     });
   };
+
+  public UpdatePrice=(items:PriceN[]):Observable<any> =>{
+
+      // debugger
+      this._url.Controller = 'Nomenclature';
+      this._url.Action = 'UpdateDataPrice';
+      this._url.ID=null;
+      let headers: HttpHeaders = new HttpHeaders({
+        Accept: 'application/json',
+        Authorization: 'Bearer ' + this._token.AccessToken,
+      });
+
+          //  var body=JSON.stringify(items);
+         //   console.log(body);
+     // let fd = this.createFormData(item,FlagSendData.all);
+
+    //!!!!  new Response(fd).text().then(console.log);
+
+      return this._http.put(this._url.Url , items,{headers});
+
+  }
 
   public UpdateOnlyImg = (item: Nomenclature): Observable<any> => {
     this._url.Controller = 'Nomenclature';
@@ -206,6 +282,7 @@ export class NomenclatureService {
   public UpdateIgnoreImg = (item: Nomenclature): Observable<any> => {
     this._url.Controller = 'Nomenclature';
     this._url.Action = 'UpdateIgnoreImg';
+    this._url.ID=item.id;
 
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -216,7 +293,7 @@ export class NomenclatureService {
 
    // !!! new Response(fd).text().then(console.log);
 
-    return this._http.put(this._url.Url + '/' + item.id, fd, {
+    return this._http.put(this._url.Url, fd, {
       reportProgress: true,
       observe: 'events',
       headers,

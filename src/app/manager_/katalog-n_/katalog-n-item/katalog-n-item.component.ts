@@ -23,6 +23,7 @@ export class KatalogNItemComponent implements OnInit {
   @Output() public _onKatalogNChange = new EventEmitter<DtoKatalogN>();
   @Input() public _select_KatalogN:KatalogN | undefined;
   @Input() public _flagViewState: StateView | undefined;
+  @Input() public _select_CategoriaN_ID:number|undefined;
 
   public _flag_sendServerData: boolean = false;
 
@@ -63,6 +64,9 @@ export class KatalogNItemComponent implements OnInit {
       // --- start create--
       if (this._select_KatalogN) {
         this._select_KatalogN.id = 0;
+        if(this._select_CategoriaN_ID)this._select_KatalogN.categoriaId=this._select_CategoriaN_ID;
+        
+
         this._repository.Create(this._select_KatalogN).subscribe(
           (data: HttpEvent<any>) => {
             //progress bar

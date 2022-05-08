@@ -51,6 +51,6 @@ export class VersionInfoService {
  public  get RootImg(): string {
     // return this.http.get(src,{responseType: 'blob'});
 
-    return this.url.RootImage;
+    return this.url.WWWroot;
   }
 }

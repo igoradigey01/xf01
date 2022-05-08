@@ -99,6 +99,7 @@ export class AccountService {
   public isUserValid(token: string): Observable<any> {
     this.url.Controller = this._controller;
     this.url.Action = 'IsTokenValid';
+    this.url.ID=null;
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       Authorization: 'Bearer ' + token,

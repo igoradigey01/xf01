@@ -34,7 +34,11 @@ export class NomenclatureItemComponent implements OnInit {
   @Input() public _articles: Article[] = [];
   @Input() public _brands: Brand[] = [];
   @Input() public _colors: Color[] = [];
-  @Input() public _select_katalogN: KatalogN =<KatalogN>{id:-1,name:'',hidden:false};
+  @Input() public _select_katalogN: KatalogN = <KatalogN>{
+    id: -1,
+    name: '',
+    hidden: false,
+  };
   @Input() public _flagViewMode: StateView | undefined;
 
   @Output() public _onChangeStateView = new EventEmitter<StateView>();
@@ -65,7 +69,13 @@ export class NomenclatureItemComponent implements OnInit {
   public _showPrefix = true;
 
   public get IsCreateView(): boolean {
-    return this._flagViewMode == StateView.create ? false : true;
+    return this._flagViewMode == StateView.create ? true : false;
+  }
+
+  public get TitleItem(): string {
+    return this.IsCreateView
+      ? 'Создать Позицию Номенклатуры'
+      : 'Редактировать Позицию Номенклатуры';
   }
 
   constructor(
@@ -92,25 +102,37 @@ export class NomenclatureItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // debugger
+     debugger
     if (this._select_katalogN) {
       this._select_Nomenclature.katalogId = this._select_katalogN.id;
       this._select_Nomenclature.katalogName = this._select_katalogN.name;
     }
   }
 
-  public get ShowPrefix(): boolean {
-    if (this._select_Nomenclature.katalogName) {
-      if (
-        this._select_Nomenclature.name.search(
-          this._select_Nomenclature.katalogName
-        ) != -1
-      )
-        return true;
-      else return false;
-    }
+  public onBrandChange(event: any) {
+    //debugger
+    //console.log('Book changed...');
+    let selectedIdBrand = +event.value;
 
-    return false;
+    this._select_Nomenclature.brandName = this._brands.find(
+      (d) => d.id === this._select_Nomenclature.brandId
+    )?.name;
+  }
+
+  public onColorChange(event: any) {
+    let selectedIdColor = +event.value;
+
+    this._select_Nomenclature.colorName = this._colors.find(
+      (d) => d.id === this._select_Nomenclature.colorId
+    )?.name;
+  }
+
+  public onArticleChange(event: any) {
+    let selectedIdArticle = +event.value;
+
+    this._select_Nomenclature.articleName = this._articles.find(
+      (d) => d.id === this._select_Nomenclature.articleId
+    )?.name;
   }
 
   public onChangedDtoImage(event: DtoImage): void {
@@ -118,7 +140,7 @@ export class NomenclatureItemComponent implements OnInit {
   }
 
   public onFlagButtonPanel(event: boolean): void {
-    // debugger
+     debugger
     this._flagButtonShow = !event;
   }
 
@@ -272,7 +294,7 @@ export class NomenclatureItemComponent implements OnInit {
   }
 
   /** Create  or Update all */
-  public saveProduct(): void {
+  public saveNomenclature(): void {
     this._flagInvalid = true;
     this._flag_sendServerData = true;
     // debugger
@@ -327,6 +349,8 @@ export class NomenclatureItemComponent implements OnInit {
               this._flagError = false;
 
               this._select_Nomenclature.guid = data.body.guid; // on server imgName ==Image
+              this._select_Nomenclature.id=data.body.id;
+              this._select_Nomenclature.wwwroot=this._repository.WWWroot;
 
               this._onNomenclatureChange.emit(<DtoNomenclature>{
                 nomenclature: this._select_Nomenclature, //,
@@ -423,7 +447,7 @@ export class NomenclatureItemComponent implements OnInit {
     // this._flagInvalid = true; //!!!!
   }
 
-  public deleteProduct() {
+  public deleteNomenclature() {
     this._flagInvalid = true;
     this._flag_sendServerData = true;
     // debugger
@@ -477,7 +501,7 @@ export class NomenclatureItemComponent implements OnInit {
 
     return;
   }
-  public back(){
+  public onBackInKatalog() {
     this._onChangeStateView.emit(StateView.default);
   }
 

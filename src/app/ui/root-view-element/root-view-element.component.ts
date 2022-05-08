@@ -44,16 +44,16 @@ export class RootViewElementComponent implements OnInit {
 
            });
 
-    let sub2=  this.userManager.InvalidTimeAccess_token$.subscribe(
+  /*   let sub2=  this.userManager.InvalidTimeAccess_token$.subscribe(
       d => {
         this._invalidLogin = d;
 
       //  console.log("RootViewElementComponent--this.userManager.InvalidTimeAccess_token$--")
         if(d) this.routedLogins();
       }
-    );
+    ); */  //18.04.22
     this._subscriptions.push(sub1);
-    this._subscriptions.push(sub2);
+   // this._subscriptions.push(sub2);//18.04.22
   }
 
   ngOnInit(): void {
@@ -72,6 +72,7 @@ export class RootViewElementComponent implements OnInit {
   }
 
   public addItem():void {
+    // debugger
     this._flagViewState = StateView.create;
     this._selectedKagalogUI = <KatalogUI>{ id: -1, name: '' };
     this.onChangedViewMode.emit(this._flagViewState);

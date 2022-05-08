@@ -18,6 +18,7 @@ export class LeftPanelViewElementComponent implements OnInit {
   // @ViewChild('sidenav') _sidenav: MatSidenav|undefined;
   @Input() public _modul_name: string = '';
   @Input() public _router_link: string = '';
+  @Input() public _flagAddButton:boolean=true;
   @Input()  public _flagViewState: StateView = StateView.default;
   @Output() _onChangedViewMode = new EventEmitter<StateView>();
   @Output() _onChangedKatalogUI = new EventEmitter<KatalogUI>();

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StateView } from 'src/app/_shared/_interfaces/state-view';
 import { Input, Output, EventEmitter } from '@angular/core';
-//import { CategoriaNService } from '../../shared/services/categoria-n.service';
+import { Router } from '@angular/router';
 import { CategoriaN } from 'src/app/_shared/_interfaces/categoria-n.model';
 import { DtoCategoriaN } from '../../categoria-n_/categoria-n-item/categoria-n-item.component';
 
@@ -19,7 +19,9 @@ export class NomenclatureCategoriaComponent implements OnInit {
 
   public _select_categoriaN: CategoriaN = <CategoriaN>{ id: -1, name: '' };
 
-  constructor() {}
+  constructor(
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
   //  this.loadCategorias(); -- load in MainComponent
@@ -42,6 +44,12 @@ export class NomenclatureCategoriaComponent implements OnInit {
   public onChangedDefaultState() {
     //debugger
     this._flagViewState = StateView.default;
+  }
+
+  public onBackInNavBar(){
+    console.log(" onBackInNavBar")
+    this.router.navigateByUrl('/manager');
+
   }
 
 

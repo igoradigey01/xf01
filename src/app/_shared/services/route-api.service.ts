@@ -45,9 +45,9 @@ export class RouteApiService {
   }
 
   /** path server image wwwroot/image*/
-  public get RootImage(): string {
-    if (this._serverRoot) return `${this._serverRoot}images/`;
-    else throw new Error(' environment serverRoot -undefined');
+  public get WWWroot(): string {
+    return `${this._serverRoot}images/`;
+  
   }
 
   private createCompleteRoute = (

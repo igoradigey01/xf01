@@ -14,13 +14,13 @@ import {NomenclatureMainComponent} from './nomenclature_/nomenclature-main/nomen
 
 
 const routes: Routes = [
-  { path: '', component: ManagerBarComponent },
-  {path:'katalog-n',component:KatalogNMainComponent},
-  {path:'categoria-n',component:CategoriaNMainComponent},
-  {path:'color-n',component:ColorNMainComponent},
-  {path:'brand-n',component:BrandMainComponent},
-  {path:'article-n',component:ArticleNMainComponent},
-  {path:'nomenclature',component:NomenclatureMainComponent },
+  { path: '', component: ManagerBarComponent , canActivate: [ManagerGuard]},
+  {path:'katalog-n',component:KatalogNMainComponent, canActivate: [ManagerGuard]},
+  {path:'categoria-n',component:CategoriaNMainComponent, canActivate: [ManagerGuard]},
+  {path:'color-n',component:ColorNMainComponent, canActivate: [ManagerGuard]},
+  {path:'brand-n',component:BrandMainComponent , canActivate: [ManagerGuard]},
+  {path:'article-n',component:ArticleNMainComponent, canActivate: [ManagerGuard]},
+  {path:'nomenclature',component:NomenclatureMainComponent, canActivate: [ManagerGuard] },
   { path: 'info', component: InfoComponent, canActivate: [ManagerGuard] },
 ];
 

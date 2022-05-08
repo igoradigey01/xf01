@@ -8,7 +8,9 @@ export interface Nomenclature extends UI {
   guid:string;   // name -- img getServer(wwwroot/image)
   position:number;// for by Sort in list render
   hidden:boolean;
-  rootStrImg:string; // src for img on server wwwroot/image
+  inStock:boolean; //есть  на складе ?
+  sale:boolean; // распродажа ?
+ // rootStrImg:string; // src for img on server wwwroot/image
   katalogId:number;
   katalogName?:string;
   colorId:number;

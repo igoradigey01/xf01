@@ -31,7 +31,14 @@
 
 
 .botton_Ratio_true{
-  background-color: var(--bs-green);
+  background-color: var(--bs-green)  !important;
+  color: #000000de;
+
+
+}
+.botton-Ratio{
+  background-color: hsl(47deg 100% 63%);
+  color: #000000de;
 
 }
 
@@ -41,6 +48,12 @@
 
 }
 
+
+.accent-btn{
+  background-color: hsl(47deg 100% 63%);
+  color: var(--bs-purple);
+
+}
 
 
 

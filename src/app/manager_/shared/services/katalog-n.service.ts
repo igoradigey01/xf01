@@ -42,7 +42,7 @@ export class KatalogNService {
 
   public KatalogNs = (categoriaId:number): Observable<KatalogN[]> => {
     this._url.Controller = 'KatalogN';
-    this._url.Action = 'Items';
+    this._url.Action = 'KatalogNs';
     this._url.ID=categoriaId;
 
 
@@ -62,6 +62,8 @@ export class KatalogNService {
     this._url.Controller = 'KatalogN';
     this._url.Action = 'Create';
     this._url.ID=null;
+
+    item.postavchikId=this._url.PostavchikId;
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       Authorization: 'Bearer ' + this._token.AccessToken,
@@ -69,7 +71,7 @@ export class KatalogNService {
 
     let fd = this.createFormData(item);
 
-  //   new Response(fd).text().then(console.log);
+     new Response(fd).text().then(console.log);
 
     return this._http.post(this._url.Url, fd,{
       reportProgress: true,
@@ -85,6 +87,7 @@ export class KatalogNService {
    this._url.Controller = 'KatalogN';
    this._url.Action = 'Update';
    this._url.ID=item.id;
+   item.postavchikId=this._url.PostavchikId;
  //  debugger
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -127,7 +130,7 @@ export class KatalogNService {
 
       // debugger
       entries.forEach(([key, value]) => {
-         // if (key == 'products') return;
+          if (key == 'categoriaName') return;
 
        /*  if (key == 'imageWebp') {
           let f = value as File;

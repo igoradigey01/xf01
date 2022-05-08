@@ -60,6 +60,8 @@ export class NomenclatureMainComponent implements OnInit {
       hidden: false,
       markup: 20,
       price: -1,
+      sale:false,
+      inStock:true,
       description: '',
       guid: '',
     };
@@ -94,28 +96,15 @@ export class NomenclatureMainComponent implements OnInit {
     }
   }
 
-  public onChangedViewMode(event: StateView) {
-    // debugger
+  public onChangedViewModeMain(event: StateView) {
+  //  debugger
     this._flagViewState = event;
-    if (this._flagViewState == StateView.create) {
-      this._select_Nomenclature =  <Nomenclature>{
-        id: -1,
-        name: '',
-        katalogId: -1,
-        articleId: -1,
-        brandId: -1,
-        colorId: -1,
-        position:0,
-        hidden: false,
-        markup: 20,
-        price: -1,
-        description: '',
-        guid: '',
-      };
-    }
+
+
   }
 
   public onChangedKatalogUI(event: KatalogUI) {
+    debugger
     this._flagViewState = StateView.default;
     this._select_KatalogN.id = event.id;
     this._select_KatalogN.name=event.name;
@@ -126,9 +115,10 @@ export class NomenclatureMainComponent implements OnInit {
         // console.log('onChangedKatalog');
         // console.log(JSON.stringify(data));
       });
+      console.log(JSON.stringify(this._nomenclatures));
   }
 
-  public onChangeCategoriaN_UI(event:DtoCategoriaN) {
+  public onChangeCategoriaN(event:DtoCategoriaN) {
     //  debugger
     this._select_CategoriaN_id = event.categoriaN.id;
     this._select_CategoriaN_name=event.categoriaN.name;
@@ -138,6 +128,6 @@ export class NomenclatureMainComponent implements OnInit {
     this._flagViewState=event.flagViewState;
 
   }
-  
+
 
 }
