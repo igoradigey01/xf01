@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { KatalogN} from 'src/app/_shared/_interfaces/katalog-n.model';
-import { KatalogNService} from '../../shared/services/katalog-n.service';
+import { ActivatedRoute ,Router} from '@angular/router';
+import { KatalogN } from 'src/app/_shared/_interfaces/katalog-n.model';
+import { KatalogNService } from '../../shared/services/katalog-n.service';
 import { Meta, Title } from '@angular/platform-browser';
-import {SharedVarService} from 'src/app/_shared/services/shared-var.service';
-import {SEO_var} from 'src/app/_shared/_interfaces/SEO-var.models'
+import { SharedVarService } from 'src/app/_shared/services/shared-var.service';
+import { SEO_var } from 'src/app/_shared/_interfaces/SEO-var.models';
+
 
 @Component({
   selector: 'app-katalog-n',
@@ -15,27 +16,30 @@ export class KatalogNComponent implements OnInit {
 
 
 
-  _katalogNs: KatalogN[] | undefined ;
-  _categoriaN_name:string ='';
+  _katalogNs: KatalogN[] | undefined;
+  _categoriaN_name: string = '';
 
 
 
   constructor(
 
-    private repository:  KatalogNService,
+    private repository: KatalogNService,
     private route: ActivatedRoute,
+    private router: Router,
     private meta: Meta,
     private titleMeta: Title,
-    private sharedVar:SharedVarService
+    private sharedVar: SharedVarService
+
   ) { }
 
   ngOnInit(): void {
 
-    const katalogId: string | null = this.route.snapshot.paramMap.get('id');
-    const id: number = Number(katalogId) || 0;
+    const categoriaId: string | null = this.route.snapshot.paramMap.get('id');
+    const id: number = Number(categoriaId) || 0;
     this.route.queryParams.subscribe((queryParam: any) => {
-      this._categoriaN_name = queryParam['katalog'];
+      this._categoriaN_name = queryParam['categoria'];
     });
+    this.sharedVar.IdCategoria=id;
 
     if (this.sharedVar.SEO_let) this.LoadSEO(this.sharedVar.SEO_let, id);
 
@@ -43,9 +47,15 @@ export class KatalogNComponent implements OnInit {
     this.titleMeta.setTitle(this._categoriaN_name);
   }
 
+  public onBackInNavBar() {
+   // console.log(" onBackInNavBar")
+    this.router.navigateByUrl('/');
+
+  }
+
 
   private Load(idCategoria: number): void {
-    this.repository.Katalogs(idCategoria).subscribe(
+    this.repository.KatalogNs(idCategoria).subscribe(
       (d) => {
         this._katalogNs = d;
       },
@@ -57,7 +67,7 @@ export class KatalogNComponent implements OnInit {
 
   private LoadSEO(item: SEO_var, idCategoria: number) {
     if (item.id || item.id == idCategoria)
-      if (item.decriptSEO){
+      if (item.decriptSEO) {
         this.meta.updateTag({ name: 'description', content: item.decriptSEO });
       }
 

@@ -115,7 +115,7 @@ export class NomenclatureMainComponent implements OnInit {
         // console.log('onChangedKatalog');
         // console.log(JSON.stringify(data));
       });
-      console.log(JSON.stringify(this._nomenclatures));
+   //   console.log(JSON.stringify(this._nomenclatures));
   }
 
   public onChangeCategoriaN(event:DtoCategoriaN) {

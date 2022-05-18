@@ -1,8 +1,9 @@
 export enum StateView {
   default,
   init,
-  dataTable,
-  imageTable,
+  dataTable=2,
+  imageTable=3,
+  itemData=9,
   priceEdit=8,
   edit=4,
   create=5,

@@ -70,9 +70,6 @@ export class NomenclatureKatalogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
-
   }
   public onChangedNomenclature(event: DtoNomenclature) {
     if (event.flagViewState == StateView.create) {
@@ -122,7 +119,7 @@ export class NomenclatureKatalogComponent implements OnInit {
       });
   }
 
-  public onChangeEditNomenrlatureUI(event: Nomenclature) {
+  public onChangeEditNomenrlature(event: Nomenclature) {
     this._select_Nomenclature = event;
     // debugger
 

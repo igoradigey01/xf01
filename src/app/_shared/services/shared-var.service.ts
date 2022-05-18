@@ -1,17 +1,56 @@
 import { Injectable } from '@angular/core';
+import { Color } from 'src/app/_shared/_interfaces/color.model';
+import { Brand } from 'src/app/_shared/_interfaces/brand.model';
+import { Article } from 'src/app/_shared/_interfaces/article.model';
 import {SEO_var}   from 'src/app/_shared/_interfaces/SEO-var.models'
+
 @Injectable()
 export class SharedVarService {
 
   private _seoVar:SEO_var|undefined;
+  private  _clorNs:Color[]=[];
+  private _brandNs:Brand[]=[];
+  private _articleNs:Article[]=[];
+  private _idCategoria:number=-1;
 
   public get SEO_let():SEO_var|undefined{
     return this._seoVar;
   }
-
   public set SEO_let(seoVar:SEO_var|undefined){
     this._seoVar=seoVar;
   }
+
+  public get ColorNs():Color[]{
+    return this._clorNs;
+  }
+  public set ColorNs(colorNs:Color[]){
+   if(colorNs)  this._clorNs=colorNs;
+  }
+
+  public get BrandNs():Brand[]{
+    return this._brandNs;
+  }
+  public set BrandNs(brandNs:Brand[]){
+    this._brandNs=brandNs;
+  }
+
+  public get ArticleNs():Article[]{
+    return this._articleNs;
+  }
+  public set ArticleNs(articleNs:Article[]){
+    this._articleNs=articleNs;
+  }
+
+  public set IdCategoria(id:number){
+    this._idCategoria=id;
+
+  }
+  public get IdCategoria(){
+    return this._idCategoria;
+  }
+
+
+
 
   constructor() { }
 }

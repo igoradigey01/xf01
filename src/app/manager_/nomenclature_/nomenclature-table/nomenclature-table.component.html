@@ -9,16 +9,19 @@
   <ng-template name="TableView" ngSwitchDefault>
     <!--  start Table View -->
     <div class="grid-sub-container-ms grid-sub-container">
+      <div>Name</div>
       <div>Article</div>
       <div>Brand</div>
       <div>Color</div>
-      <div>Name</div>
       <div>Price</div>
       <div class="hiden-description">descripstion</div>
       <div>images</div>
 
       <!-- start model view-->
       <ng-template ngFor let-nomenclature [ngForOf]="_viewNomenclatrues" let-i="index">
+        <div [ngClass]="{ 'row-grid': i % 2 == 0 }" (click)="changeNomenclature(nomenclature)">
+          {{ nomenclature.name }}
+        </div>
         <div [ngClass]="{ 'row-grid': i % 2 == 0 }" (click)="changeNomenclature(nomenclature)">
           {{ nomenclature.articleName }}
         </div>
@@ -29,9 +32,7 @@
           {{ nomenclature.colorName }}
         </div>
 
-        <div [ngClass]="{ 'row-grid': i % 2 == 0 }" (click)="changeNomenclature(nomenclature)">
-          {{ nomenclature.name }}
-        </div>
+
         <div [ngClass]="{ 'row-grid': i % 2 == 0 }" (click)="changeNomenclature(nomenclature)">
           {{ nomenclature.price }}
         </div>
@@ -60,7 +61,7 @@
 
   <!-- start Img View  -->
   <ng-template name="ImgView" ngSwitchCase="3">
-    <p>--- ImgView ---</p>
+
 
     <div class="grid-img-view-container">
       <ng-template ngFor let-nomenclature [ngForOf]="_viewNomenclatrues" >
@@ -68,8 +69,8 @@
           <!---    start -->
 
           <div   class="img_block-img-view" >
-            <img height="200" src="{{ ImgObj(nomenclature) }}" />
-            <div style="vertical-align:text-bottom; text-align: center;">{{nomenclature.price}} </div>
+            <img class="img_block" src="{{ ImgObj(nomenclature) }}" />
+            <div style="vertical-align:text-bottom; text-align: center;">Ц:{{nomenclature.price}} </div>
 
           </div>
 
@@ -114,9 +115,9 @@
           <!---    start -->
 
           <div  class="img_block-img-view" >
-            <img height="200" src="{{ ImgObj(nomenclature) }}" />
+            <img class="img_block" src="{{ ImgObj(nomenclature) }}" />
             <input type="checkbox" class="checkbox" id="check1" />
-            <div style="vertical-align:text-bottom; text-align: center;">{{nomenclature.price}} </div>
+            <div style="vertical-align:text-bottom; text-align: center;">Ц:{{nomenclature.price}} </div>
           </div>
 
 

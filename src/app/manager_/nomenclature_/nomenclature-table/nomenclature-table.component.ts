@@ -9,7 +9,7 @@ import { DtoFilterN } from 'src/app/ui-front/filter-n/filter-n.component';
 import { StateView } from 'src/app/_shared/_interfaces/state-view';
 import { NomenclatureService } from '../../shared/services/nomenclature.service';
 import { PriceN } from '../../shared/_interfaces/price-n.model';
-import { IfStmt } from '@angular/compiler';
+
 
 interface NomenclatureP extends Nomenclature {
   check?: boolean;
