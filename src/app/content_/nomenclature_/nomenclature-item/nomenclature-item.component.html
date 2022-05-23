@@ -1,2 +1,56 @@
-<p>nomenclature-item works!</p>
-<button (click)="onBack()">Назад</button>
+<div class="card" style="width: 18rem;margin-left: auto;margin-right: auto;">
+  <div class="card-header">
+
+    <div> ID :
+      <span *ngIf="_nomenclature">{{_nomenclature.id}} </span>
+    </div>
+    <div>
+      Название: <div *ngIf="_nomenclature">
+        <span>{{_nomenclature.name}}</span>
+        <span>{{ _nomenclature.katalogName }} &nbsp;
+          <span *ngIf=" _nomenclature?.brandName!=='none';else unbrand">
+            {{ _nomenclature?.brandName }}&nbsp;
+          </span>
+          <ng-template #unbrand>
+            <span></span>
+          </ng-template>
+
+          <span *ngIf=" _nomenclature?.articleName!=='none';else unarticle">
+            {{_nomenclature?.articleName}}&nbsp;
+          </span>
+          <ng-template #unarticle>
+            <span></span>
+          </ng-template>
+
+          <span *ngIf=" _nomenclature?.colorName!=='none';else uncolor">
+            {{_nomenclature?.colorName}}&nbsp;
+          </span>
+          <ng-template #uncolor>
+            <span></span>
+          </ng-template>
+
+
+        </span>
+
+      </div>
+    </div>
+  </div>
+  <img src="{{ ImgObj() }}" class="card-img-top" alt="{{_nomenclature?.name}}">
+  <div class="card-body">
+    <h5 class="card-title">Описание товара</h5>
+    <p class="card-text">
+      {{_nomenclature?.description}}
+    </p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Артикул : {{_nomenclature?.articleName}} </li>
+    <li class="list-group-item">Цвет : {{_nomenclature?.colorName}} </li>
+    <li class="list-group-item">Бренд :{{_nomenclature?.brandName}}</li>
+    <li class="list-group-item">Цена : <span *ngIf="_nomenclature"> {{ _nomenclature.price * (_nomenclature.markup /
+        100) + _nomenclature.price}}</span></li>
+  </ul>
+  <div class="card-body">
+
+    <a (click)="onBack()" class="card-link">Назад</a>
+  </div>
+</div>

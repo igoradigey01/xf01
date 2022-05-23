@@ -4,7 +4,7 @@
 
   <div class="navigate">
     <div class="navigate-route" ><span class="navigate-route-hiden"> категории-опт</span>>каталог-опт</div>
-    <div><h4> {{  _categoriaN_name }}</h4></div>
+    <div><h4>ОПТ: {{  _categoriaN_name }}</h4></div>
     <div>
       <a  class="navigate-route-link" (click)="onBackInNavBar()" >назад</a>
     </div>
@@ -19,7 +19,7 @@
           <button
             class="btn btn-outline-info"
 
-            [routerLink]="['/content/kataog', item.id]"
+            [routerLink]="['/content/opt/optkatalog', item.id]"
             [queryParams]="{ katalog: item.name }"
           >
             {{ item.name }}

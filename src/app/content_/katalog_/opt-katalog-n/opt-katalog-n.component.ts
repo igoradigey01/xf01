@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { KatalogN } from 'src/app/_shared/_interfaces/katalog-n.model';
 import { KatalogNService } from '../../shared/services/katalog-n.service';
+import { SharedVarService } from 'src/app/_shared/services/shared-var.service';
 
 @Component({
   selector: 'app-opt-katalog-n',
@@ -15,7 +16,8 @@ export class OptKatalogNComponent implements OnInit {
   constructor(
     private repository: KatalogNService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private sharedVar: SharedVarService
   ) {}
 
   ngOnInit(): void {
@@ -24,7 +26,7 @@ export class OptKatalogNComponent implements OnInit {
     this.route.queryParams.subscribe((queryParam: any) => {
       this._categoriaN_name = queryParam['categoria'];
     });
-
+    this.sharedVar.IdCategoria=id;
     this.Load(id);
   }
 

@@ -11,6 +11,7 @@ import { OptNomenclatureComponent } from './nomenclature_/opt-nomenclature/opt-n
 import { UiFrontModule} from './../ui-front/ui-front.module';
 import { NomenclatureItemComponent } from './nomenclature_/nomenclature-item/nomenclature-item.component';
 import { OptNomenclatureItemComponent } from './nomenclature_/opt-nomenclature-item/opt-nomenclature-item.component';
+import {NomenclatureItemResolver} from './shared/resolver/nomenclature-item.resolver'
 
 
 @NgModule({
@@ -34,6 +35,9 @@ import { OptNomenclatureItemComponent } from './nomenclature_/opt-nomenclature-i
     KatalogNComponent,
     OptCategoriaNComponent,
     OptKatalogNComponent
+  ],
+  providers:[
+    NomenclatureItemResolver
   ]
 })
 export class ContentModule { }

@@ -53,7 +53,7 @@ export class NomenclatureComponent implements OnInit {
   ngOnInit(): void {
     const katalogId: string | null = this.route.snapshot.paramMap.get('id');
     const id: number = Number(katalogId) || 0;
-    
+
     this.route.queryParams.subscribe((queryParam: any) => {
       this._katalogN_name = queryParam['katalog'];
     });
@@ -61,10 +61,11 @@ export class NomenclatureComponent implements OnInit {
     if (this.sharedVar.SEO_let) this.LoadSEO(this.sharedVar.SEO_let, id);
     if(this._katalogN_name)  this.titleMeta.setTitle(this._katalogN_name);
 
-    this.Load(id);
+
     this._articles=this.sharedVar.ArticleNs;
     this._brands=this.sharedVar.BrandNs;
     this._colors=this.sharedVar.ColorNs;
+    this.Load(id);
 
 
 
@@ -113,6 +114,7 @@ export class NomenclatureComponent implements OnInit {
   }
 
   public onChangeDefaultView(){
+   // debugger
     this._flagViewState=StateView.default;
   }
 
@@ -134,6 +136,7 @@ export class NomenclatureComponent implements OnInit {
 
   public onBackInNavBar() {
     //console.log(" onBackInNavBar")
+
     this.router.navigateByUrl('/content/categoria/'+this.sharedVar.IdCategoria);
 
   }

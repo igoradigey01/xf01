@@ -133,7 +133,7 @@ export class OptNomenclatureComponent implements OnInit {
 
   public onBackInNavBar() {
     //console.log(" onBackInNavBar")
-    this.router.navigateByUrl('/content/categoria/'+this.sharedVar.IdCategoria);
+    this.router.navigateByUrl('/content/opt/'+this.sharedVar.IdCategoria);
 
   }
 

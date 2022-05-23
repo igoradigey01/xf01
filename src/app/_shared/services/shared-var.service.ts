@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Color } from 'src/app/_shared/_interfaces/color.model';
 import { Brand } from 'src/app/_shared/_interfaces/brand.model';
 import { Article } from 'src/app/_shared/_interfaces/article.model';
+import { KatalogN } from 'src/app/_shared/_interfaces/katalog-n.model';
 import {SEO_var}   from 'src/app/_shared/_interfaces/SEO-var.models'
 
 @Injectable()
@@ -11,6 +12,7 @@ export class SharedVarService {
   private  _clorNs:Color[]=[];
   private _brandNs:Brand[]=[];
   private _articleNs:Article[]=[];
+  private _katlogNs:KatalogN[]=[];
   private _idCategoria:number=-1;
 
   public get SEO_let():SEO_var|undefined{
@@ -39,6 +41,14 @@ export class SharedVarService {
   }
   public set ArticleNs(articleNs:Article[]){
     this._articleNs=articleNs;
+  }
+
+
+  public get KatalogNs():KatalogN[]{
+    return this._katlogNs;
+  }
+  public set KatalogNs(katalogNs:KatalogN[]){
+   if(katalogNs)  this._katlogNs=katalogNs;
   }
 
   public set IdCategoria(id:number){
