@@ -83,7 +83,7 @@ export class NomenclatureItemComponent implements OnInit {
       return;
     }
     if (this._nomenclature) {
-      this.router.navigateByUrl('/content/categoria/' + this._nomenclature.katalogId);
+      this.router.navigateByUrl('/content/categoria/katalog/' + this._nomenclature.katalogId);
     }
   }
 

@@ -10,6 +10,7 @@ import { map} from 'rxjs/operators';
 import { Color } from 'src/app/_shared/_interfaces/color.model';
 import { Brand } from 'src/app/_shared/_interfaces/brand.model';
 import { Article } from 'src/app/_shared/_interfaces/article.model';
+import { KatalogN } from 'src/app/_shared/_interfaces/katalog-n.model';
 
 
 @Injectable({
@@ -156,6 +157,20 @@ export class NomenclatureService {
 
     return this._http.get<Color[]>(this._url.Url, { headers });
   };
+  public KatalogN=(idKatalog:number ):Observable<KatalogN>=>{
+    this._url.Controller = 'KatalogN';
+      this._url.Action = 'Item';
+      this._url.ID=idKatalog;
 
+
+      let headers: HttpHeaders = new HttpHeaders({
+        Accept: 'application/json',
+         Authorization: 'Bearer ' + this._token.AccessToken,
+      });
+
+
+      return this._http.get<KatalogN>(this._url.Url, { headers });
+
+  }
 
 }

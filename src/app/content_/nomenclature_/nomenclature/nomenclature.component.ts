@@ -136,8 +136,13 @@ export class NomenclatureComponent implements OnInit {
 
   public onBackInNavBar() {
     //console.log(" onBackInNavBar")
-
+     if(this.sharedVar.IdCategoria!==-1)
     this.router.navigateByUrl('/content/categoria/'+this.sharedVar.IdCategoria);
+    else{
+
+      
+    }
+
 
   }
 
