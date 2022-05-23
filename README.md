@@ -18,4 +18,14 @@ https://stackoverflow.com/questions/52933476/angular-project-structure-best-prac
 # ng g 
   //loading data before load component (resolver)<br/>
   ng g resolver test  <br/>
+# nginx conf
+types { <br/>
+               module ;<br/>
+          }<br/>
+    include       mime.types; <br/>
+
+# Angular VPS
+ng build <br/>
+scp -r C:\Users\Ks34\Documents\AngularProject\xf01\dist\xf01 root@46.---.---.---:~/myapp/nginx/data <br/>
+
  
