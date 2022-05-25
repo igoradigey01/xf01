@@ -60,10 +60,11 @@ export class OptNomenclatureComponent implements OnInit {
     if (this.sharedVar.SEO_let) this.LoadSEO(this.sharedVar.SEO_let, id);
     if(this._katalogN_name)  this.titleMeta.setTitle(this._katalogN_name);
 
-    this.Load(id);
+
     this._articles=this.sharedVar.ArticleNs;
     this._brands=this.sharedVar.BrandNs;
     this._colors=this.sharedVar.ColorNs;
+    this.Load(id);
 
 
 
@@ -112,6 +113,7 @@ export class OptNomenclatureComponent implements OnInit {
   }
 
   public onChangeDefaultView(){
+   // debugger
     this._flagViewState=StateView.default;
   }
 
@@ -133,7 +135,22 @@ export class OptNomenclatureComponent implements OnInit {
 
   public onBackInNavBar() {
     //console.log(" onBackInNavBar")
+     if(this.sharedVar.IdCategoria!==-1)
     this.router.navigateByUrl('/content/opt/'+this.sharedVar.IdCategoria);
+    else{
+      if(this._nomenclatures.length>0)
+      this.repository.KatalogN(this._nomenclatures[0].katalogId).subscribe(
+        d=>{
+
+          this.router.navigateByUrl('/content/opt/'+d.categoriaId);
+
+        }
+      )
+
+
+
+    }
+
 
   }
 
@@ -160,6 +177,5 @@ export class OptNomenclatureComponent implements OnInit {
       }
     ); //13.03.21
   }
-
 }
 

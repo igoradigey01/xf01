@@ -139,8 +139,17 @@ export class NomenclatureComponent implements OnInit {
      if(this.sharedVar.IdCategoria!==-1)
     this.router.navigateByUrl('/content/categoria/'+this.sharedVar.IdCategoria);
     else{
+      if(this._nomenclatures.length>0)
+      this.repository.KatalogN(this._nomenclatures[0].katalogId).subscribe(
+        d=>{
 
-      
+          this.router.navigateByUrl('/content/categoria/'+d.categoriaId);
+
+        }
+      )
+
+
+
     }
 
 

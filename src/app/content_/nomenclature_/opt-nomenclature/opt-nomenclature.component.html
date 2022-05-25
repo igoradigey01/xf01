@@ -1,7 +1,6 @@
-<p>opt-nomenclature works!</p>
 <div class="navigate">
   <div class="navigate-route" ><span class="navigate-route-hiden"> категории>каталог</span>>номенклатура </div>
-  <div><h4> {{  _katalogN_name }}</h4></div>
+  <div><h4> ОПТ:{{  _katalogN_name }}</h4></div>
   <div>
     <a  class="navigate-route-link" (click)="onBackInNavBar()" >назад</a>
   </div>
@@ -22,7 +21,7 @@
 
             <div   class="img_block-img-view" >
               <img class="img_block" src="{{ ImgObj(nomenclature) }}" />
-              <div style="vertical-align:text-bottom; text-align: center;">Ц:{{nomenclature.price}} </div>
+              <div style="vertical-align:text-bottom; text-align: center;">Ц:{{ nomenclature.price }}р </div>
 
             </div>
 
@@ -62,7 +61,7 @@
 
 
           <div [ngClass]="{ 'row-grid': i % 2 == 0 }" (click)="changeNomenclature(nomenclature)">
-            {{ nomenclature.price }}
+            {{  nomenclature.price }}
           </div>
           <div class="hiden-description" [ngClass]="{ 'row-grid': i % 2 == 0 }"
             (click)="changeNomenclature(nomenclature)">
@@ -89,11 +88,12 @@
 
     <ng-template name="ItemView"   ngSwitchCase="9" >
 
-      <app-nomenclature-item
+      <app-opt-nomenclature-item
       [_nomenclature]="_select_nomenclature"
+      [_isChildComponent]="true"
       (_onChangeBack)="onChangeDefaultView()"
 
-      ></app-nomenclature-item>
+      ></app-opt-nomenclature-item>
 
     </ng-template>
 
@@ -102,5 +102,4 @@
   </div>
 
   <!----------------- create end-->
-
 
