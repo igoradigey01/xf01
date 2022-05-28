@@ -9,4 +9,5 @@ export enum StateView {
   create=5,
   wait=6,
   delete=7
+
 }

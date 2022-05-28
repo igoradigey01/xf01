@@ -1,4 +1,4 @@
-import { Component, OnInit ,  SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Nomenclature } from 'src/app/_shared/_interfaces/nomenclature.model';
 import { EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,11 +15,22 @@ export class NomenclatureItemComponent implements OnInit {
 
   @Output() public _onChangeBack = new EventEmitter()
   @Input() public _nomenclature: Nomenclature | undefined;
-  @Input()   public _isChildComponent:boolean=false;
+  @Input() public _isChildComponent: boolean = false;
+  public _flagShowQRcode: boolean = false;
 
 
 
-  //private _isComponentChild = true;
+  public get NomenclatureURL(): string | undefined {
+    if (this._nomenclature)
+      return 'content/opt/optkatalog/optnomenclature/' + this._nomenclature.id;
+    else return undefined;
+  }
+
+  public get KatalogURL(): string | undefined {
+    if (this._nomenclature)
+      return 'content/opt/optkatalog/' + this._nomenclature.katalogId;
+    else return undefined;
+  }
 
 
   constructor(
@@ -31,40 +42,32 @@ export class NomenclatureItemComponent implements OnInit {
 
   ngOnInit(): void {
 
- // this is for http.get(http://localhost:4200/content/categoria/katalog/nomenclature/:id)
- if(!this._isChildComponent){
-    const katalogId: string | null = this.route.snapshot.paramMap.get('id');
+    // this is for http.get(http://localhost:4200/content/categoria/katalog/nomenclature/:id)
+    if (!this._isChildComponent) {
+      const nomenclatureId: string | null = this.route.snapshot.paramMap.get('id');
       // resolver run //(QR-code)
       this.route.data.subscribe();
 
-    if (katalogId) {
-      const id: number = Number(katalogId) || 0;
-      this.load(id);
+      if (nomenclatureId) {
+        const id: number = Number(nomenclatureId) || 0;
+        this.load(id);
+      }
+      console.log("ngOnInit nomenclatureItem _isChildComponent --false");
+    } else {
+      if (this._nomenclature) {
+        this._nomenclature.articleName = this.sharedVar.ArticleNs.length > 0 ? this.sharedVar.ArticleNs.find(d => d.id === this._nomenclature!.articleId)?.name : undefined;
+        this._nomenclature.brandName = this.sharedVar.BrandNs.length > 0 ? this.sharedVar.BrandNs.find(d => d.id === this._nomenclature!.brandId)?.name : undefined;
+        this._nomenclature.colorName = this.sharedVar.ColorNs.length > 0 ? this.sharedVar.ColorNs.find(d => d.id === this._nomenclature!.colorId)?.name : undefined;
+
+      }
+
     }
-    console.log("ngOnInit nomenclatureItem _isChildComponent --false");
-  }else{
-    if(this._nomenclature){
-      this._nomenclature.articleName=this.sharedVar.ArticleNs.length>0?this.sharedVar.ArticleNs.find(d=>d.id===this._nomenclature!.articleId)?.name:undefined;
-      this._nomenclature.brandName=this.sharedVar.BrandNs.length>0?this.sharedVar.BrandNs.find(d=>d.id===this._nomenclature!.brandId)?.name:undefined;
-      this._nomenclature.colorName=this.sharedVar.ColorNs.length>0?this.sharedVar.ColorNs.find(d=>d.id===this._nomenclature!.colorId)?.name:undefined;
 
-       }
+    // console.log("NomemclatureItem -- clolrN.lenght"+this.sharedVar.ColorNs.length)
 
   }
 
-   // console.log("NomemclatureItem -- clolrN.lenght"+this.sharedVar.ColorNs.length)
 
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-
-
-
-
-
-
-
-  }
 
   public ImgObj(): string {
     // copy paste  from manager module
@@ -87,6 +90,10 @@ export class NomenclatureItemComponent implements OnInit {
     }
   }
 
+  public onToggle() {
+    this._flagShowQRcode = !this._flagShowQRcode;
+  }
+
 
   private load(id: number) {
     this.repository.Nomenclature(id).subscribe(
@@ -95,15 +102,15 @@ export class NomenclatureItemComponent implements OnInit {
 
 
       },
-      err=> {},
-      ()=>{
+      err => { },
+      () => {
 
-        if(this._nomenclature){
-          this._nomenclature.articleName=this.sharedVar.ArticleNs.length>0?this.sharedVar.ArticleNs.find(d=>d.id===this._nomenclature!.articleId)?.name:undefined;
-          this._nomenclature.brandName=this.sharedVar.BrandNs.length>0?this.sharedVar.BrandNs.find(d=>d.id===this._nomenclature!.brandId)?.name:undefined;
-          this._nomenclature.colorName=this.sharedVar.ColorNs.length>0?this.sharedVar.ColorNs.find(d=>d.id===this._nomenclature!.colorId)?.name:undefined;
+        if (this._nomenclature) {
+          this._nomenclature.articleName = this.sharedVar.ArticleNs.length > 0 ? this.sharedVar.ArticleNs.find(d => d.id === this._nomenclature!.articleId)?.name : undefined;
+          this._nomenclature.brandName = this.sharedVar.BrandNs.length > 0 ? this.sharedVar.BrandNs.find(d => d.id === this._nomenclature!.brandId)?.name : undefined;
+          this._nomenclature.colorName = this.sharedVar.ColorNs.length > 0 ? this.sharedVar.ColorNs.find(d => d.id === this._nomenclature!.colorId)?.name : undefined;
 
-           }
+        }
 
       }
 

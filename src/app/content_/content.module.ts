@@ -12,7 +12,8 @@ import { UiFrontModule} from './../ui-front/ui-front.module';
 import { NomenclatureItemComponent } from './nomenclature_/nomenclature-item/nomenclature-item.component';
 import { OptNomenclatureItemComponent } from './nomenclature_/opt-nomenclature-item/opt-nomenclature-item.component';
 import {NomenclatureItemResolver} from './shared/resolver/nomenclature-item.resolver'
-
+import { QrCodeModule } from 'ng-qrcode';
+import { QrCodeComponent } from '../content_/nomenclature_/qr-code/qr-code.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +23,17 @@ import {NomenclatureItemResolver} from './shared/resolver/nomenclature-item.reso
     NomenclatureComponent,
     OptNomenclatureComponent,
     NomenclatureItemComponent,
-    OptNomenclatureItemComponent
+    OptNomenclatureItemComponent,
+    QrCodeComponent
+
   ],
   imports: [
     CommonModule,
     ContentRoutingModule,
     ManagerServiceModule,
     UiFrontModule,
-    MaterialFrontModule
+    MaterialFrontModule,
+    QrCodeModule
   ],
   exports:[
     KatalogNComponent,

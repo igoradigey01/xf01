@@ -36,14 +36,13 @@ const routes: Routes = [
   {
     path: 'opt/optkatalog/:id',
     component: OptNomenclatureComponent,
-    canActivate: [ContentGuard],
+   // canActivate: [ContentGuard],
   },
   {
     path: 'opt/optkatalog/optnomenclature/:id',
     component: OptNomenclatureItemComponent,
-    canActivate: [ContentGuard],
-    resolve: { multiple_dataNs: NomenclatureItemResolver },
-  },
+    resolve: { multiple_dataNs: NomenclatureItemResolver }
+   },
 ];
 
 @NgModule({

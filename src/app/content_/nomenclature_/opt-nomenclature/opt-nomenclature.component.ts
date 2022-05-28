@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { SEO_var } from 'src/app/_shared/_interfaces/SEO-var.models';
 import {NomenclatureService} from './../../shared/services/nomenclature.servise'
+import { UserManagerService } from 'src/app/_shared/services/user-manager.service';
 
 interface NomenclatureP extends Nomenclature {
   check?: boolean;
@@ -47,10 +48,12 @@ export class OptNomenclatureComponent implements OnInit {
     private meta: Meta,
     private titleMeta: Title,
     private repository:  NomenclatureService,
+    private _userManager: UserManagerService
   ) { }
 
   ngOnInit(): void {
     const katalogId: string | null = this.route.snapshot.paramMap.get('id');
+    this.redirect(katalogId);
     const id: number = Number(katalogId) || 0;
 
     this.route.queryParams.subscribe((queryParam: any) => {
@@ -177,5 +180,13 @@ export class OptNomenclatureComponent implements OnInit {
       }
     ); //13.03.21
   }
+
+  private redirect(idKatlog:string|null){
+    //  debugger
+       if(!this._userManager.IsShopperOpt){
+         this.router.navigate(['/content/categoria/katalog/'+idKatlog])
+
+       }
+     }
 }
 

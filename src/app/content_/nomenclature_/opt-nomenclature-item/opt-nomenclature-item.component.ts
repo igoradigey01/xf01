@@ -1,9 +1,10 @@
-import { Component, OnInit ,  SimpleChanges } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { Nomenclature } from 'src/app/_shared/_interfaces/nomenclature.model';
 import { EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NomenclatureService } from './../../shared/services/nomenclature.servise'
 import { SharedVarService } from 'src/app/_shared/services/shared-var.service';
+import { UserManagerService } from 'src/app/_shared/services/user-manager.service';
 
 @Component({
   selector: 'app-opt-nomenclature-item',
@@ -17,9 +18,21 @@ export class OptNomenclatureItemComponent implements OnInit {
   @Input() public _nomenclature: Nomenclature | undefined;
   @Input()   public _isChildComponent:boolean=false;
 
+  public _flagShowQRcode:boolean=false;
 
 
-  //private _isComponentChild = true;
+
+  public get NomenclatureURL(): string | undefined {
+    if (this._nomenclature)
+      return 'content/opt/optkatalog/optnomenclature/' + this._nomenclature.id;
+    else return undefined;
+  }
+
+  public get KatalogURL(): string | undefined {
+    if (this._nomenclature)
+      return '/content/opt/optkatalog/' + this._nomenclature.katalogId;
+    else return undefined;
+  }
 
 
   constructor(
@@ -27,18 +40,20 @@ export class OptNomenclatureItemComponent implements OnInit {
     private router: Router,
     private repository: NomenclatureService,
     private sharedVar: SharedVarService,
+    private _userManager: UserManagerService
   ) { }
 
   ngOnInit(): void {
 
- // this is for http.get(http://localhost:4200/content/categoria/katalog/nomenclature/:id)
+ // this is for http.get(http://localhost:4200/content/opt/optkatalog/optnomenclature/:id)
  if(!this._isChildComponent){
-    const katalogId: string | null = this.route.snapshot.paramMap.get('id');
+    const nomenclatureId: string | null = this.route.snapshot.paramMap.get('id');
+    this.redirect(nomenclatureId);
       // resolver run //(QR-code)
       this.route.data.subscribe();
 
-    if (katalogId) {
-      const id: number = Number(katalogId) || 0;
+    if (nomenclatureId) {
+      const id: number = Number(nomenclatureId) || 0;
       this.load(id);
     }
     console.log("ngOnInit nomenclatureItem _isChildComponent --false");
@@ -53,16 +68,6 @@ export class OptNomenclatureItemComponent implements OnInit {
   }
 
    // console.log("NomemclatureItem -- clolrN.lenght"+this.sharedVar.ColorNs.length)
-
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-
-
-
-
-
-
 
   }
 
@@ -85,6 +90,10 @@ export class OptNomenclatureItemComponent implements OnInit {
     if (this._nomenclature) {
       this.router.navigateByUrl('/content/opt/optkatalog/' + this._nomenclature.katalogId);
     }
+  }
+
+  public onToggle(){
+    this._flagShowQRcode=!this._flagShowQRcode;
   }
 
 
@@ -110,5 +119,13 @@ export class OptNomenclatureItemComponent implements OnInit {
     )
 
   }
+
+  private redirect(idNomenclature:string|null){
+    //  debugger
+       if(!this._userManager.IsShopperOpt){
+         this.router.navigate(['/content/categoria/katalog/nomenclature/'+idNomenclature])
+
+       }
+     }
 
 }

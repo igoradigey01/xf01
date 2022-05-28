@@ -1,0 +1,34 @@
+
+<h4>QR Каталог</h4>
+ <div class="qr-img" *ngIf="KatalogURL" >
+
+  <qr-code id="printK" value={{KatalogURL}} size="250" errorCorrectionLevel="M"></qr-code>
+
+
+ </div>
+ <ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <div style="display:flex;justify-content:space-between ;">
+
+      <a class="print" (click)="printQrKtalog()" >Печать</a>
+      <a class="print" (click)="printQrKtalog()" >Скачать</a>
+    </div>
+  </li>
+ </ul>
+
+
+
+<h4>QR Номенклатура</h4>
+
+<div class="qr-img" *ngIf="NomenclatureURL" >
+  <qr-code value={{NomenclatureURL}} size="250" errorCorrectionLevel="M"></qr-code>
+</div>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <div style="display:flex;justify-content:space-between ;">
+
+      <a class="print" (click)="printQrKtalog()" >Печать</a>
+      <a class="print" (click)="printQrKtalog()" >Скачать</a>
+    </div>
+  </li>
+ </ul>

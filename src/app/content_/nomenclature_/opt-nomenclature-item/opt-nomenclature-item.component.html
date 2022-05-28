@@ -1,4 +1,5 @@
 <div class="card" style="width: 18rem;margin-left: auto;margin-right: auto;">
+  <div *ngIf="!_flagShowQRcode ;else showQR">
   <div class="card-header">
 
     <div>ОПТ ( ID ):
@@ -48,9 +49,19 @@
     <li class="list-group-item">Бренд :{{_nomenclature?.brandName}}</li>
     <li class="list-group-item">Цена : <span *ngIf="_nomenclature"> {{ _nomenclature.price }}р</span></li>
   </ul>
-  <div class="card-body">
-
-    <a (click)="onBack()" class="card-link">Назад</a>
-  </div>
 </div>
+<div class="card-body" style="display:flex;justify-content:space-between ;">
+
+  <a (click)="onBack()" class="card-link">Назад</a>
+  <a (click)="onToggle()" class="card-link">QR Code</a>
+</div>
+</div>
+
+<ng-template #showQR>
+  <app-qr-code
+  [_katalogURL]="KatalogURL"
+  [_nomenclatureURL]="NomenclatureURL"
+  >
+  </app-qr-code>
+</ng-template>
 

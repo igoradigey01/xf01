@@ -12,6 +12,8 @@ generate opt client : go to link <br/>
 http://localhost:4200/content/opt?user=opt1
 
 # QR-code idNomenclature=12
+http://localhost:4200/content/opt/optkatalog/optnomenclature/12
+or (!opt) redering to
 http://localhost:4200/content/categoria/katalog/nomenclature/12
 
 # Angular Development Best Practices
@@ -39,4 +41,13 @@ docker system df <br/>
 docker volume ls <br/>
 docker volume prune // delete volume <br/>
  docker ps <br/>
+ # Angular Yarn
+ http://prgssr.ru/development/yarn-ili-npm-vse-chto-vam-nuzhno-znat.html#heading-yarn--npm----- <br/>
+ https://habr.com/ru/post/554944/<br/>
+  npm install -g yarn<br/>
+
+  # Angular PDF
+  npm install -g yarn<br/>
+  yarn add jspdf <br/>
+
  
