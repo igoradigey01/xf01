@@ -1,6 +1,9 @@
 # Xf01
 Client counterparty to Nomenclature for apiX01 <br/>
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version  13.2.6.
+sample :<br/>
+https://xf-01.ru  <br/>
+https://xf-01.ru/content/categoria/katalog/12?katalog=Форнитура <br/>
 
 # image-cropper
  ui/img-render/img-render.component.ts <br/>
@@ -47,7 +50,21 @@ docker volume prune // delete volume <br/>
   npm install -g yarn<br/>
 
   # Angular PDF
+  help : https://mrrio.github.io/jsPDF/examples/basic.html <br>
   npm install -g yarn<br/>
   yarn add jspdf <br/>
+  //download fonts <br/>
+  https://fonts.google.com/ <br/>
+  //unzip <br/>
+  //convert<br/>
+  https://rawgit.com/MrRio/jsPDF/master/fontconverter/fontconverter.html <br/>
+  add file to assets/font/my-font.js <br/>
+  delete : import { jsPDF } from "jspdf"; and function <br/>
+  add angular.json /first  prodject section / "scripts": ["src/assets/fonts/my-font.js"] <br/>
+  add ( declare var font: any; ) header qr-code.component.ts <br/>
+  restart ( ng s )<br/>
+  or see js-pdf.service.ts<br/>
+  
+  
 
  

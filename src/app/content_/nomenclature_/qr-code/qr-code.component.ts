@@ -1,7 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges  } from '@angular/core';
 import { Input, Output } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { jsPDF } from "jspdf";
+import {JsPDFService} from './../../shared/services/js-pdf.service'
+
+
+//declare var test: any;
+//declare var hello:any;
+
+
+
 //Что такое QR-код--
 // https://cryptos.tv/chto-takoe-qr-kod-quick-response-code-kak-sozdat-i-skanirovat-qr-kod-na-smartfone/
 // lib
@@ -15,10 +23,16 @@ import { jsPDF } from "jspdf";
 })
 export class QrCodeComponent implements OnInit {
 
+
+
   @Input() public _nomenclatureURL: string | undefined;
   @Input()   public _katalogURL:string |undefined;
-
+  @Input() public _flagShowQrKatlog:boolean=true;
+  @Input() public _fullName:string=''
+  public _error:string|undefined;
   public _clientHostURL:string;
+
+
 
    public get NomenclatureURL():string|undefined{
      if(this._nomenclatureURL)
@@ -33,68 +47,96 @@ export class QrCodeComponent implements OnInit {
        else return undefined;
    }
 
-  constructor() {
+  constructor(
+    private _repository:JsPDFService
+  ) {
     this._clientHostURL = environment.clientRoot;
   }
 
   ngOnInit(): void {
+
+
+  }
+
+  private extractData(res: Response) {
+
+}
+
+  ngOnChanges(changes: SimpleChanges) {
+
+   this._error=undefined;
+
   }
 
 
    public printQrKtalog():void{
+     this._error=undefined;
     const toPrint = document.getElementsByTagName('canvas')[0];
-
-
+    if(toPrint){
     let imageData=this.getBase64Canvas(toPrint);
+    //console.log(imageData);
+    let doc = this._repository.DocPDF
+    console.log(doc.getFontList)
+    doc.setProperties({
+      title:   this._fullName
 
-    console.log(imageData);
-    let doc = new jsPDF();
-    doc.addImage(imageData, 'JPEG', 0, 0, 20, 20);
-    doc.addImage(imageData, 'JPEG', 20, 0, 20, 20);
-    doc.addImage(imageData, 'JPEG', 40, 0, 20, 20);
-    doc.addImage(imageData, 'JPEG', 60, 0, 20, 20);
-    doc.addImage(imageData, 'JPEG', 80, 0, 20, 20);
-   /*  if(imageData)
-    doc.addImage(imageData); */
-    doc.save('tatle');
+  });
 
-    //const WindowPrt = window.open('', '', 'left=50,top=50,width=800,height=800,toolbar=0,scrollbars=0,status=0');
-   /*  const WindowPrt= window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
-    if(toPrint&&WindowPrt){
-    WindowPrt.document.write(imageData);
-    WindowPrt.document.close();
-    WindowPrt.focus();
-    WindowPrt.print();
-    WindowPrt.close();
-    } */
-   }
+    this.createDoc(doc,imageData);
 
-   getBase64Image(img:any) {
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    var ctx = canvas.getContext("2d");
-    if(ctx)
-    ctx.drawImage(img, 0, 0);
-    var dataURL = canvas.toDataURL("image/png");
-    return dataURL;
-  }
-
-    getBase64Canvas(canvas:any){
-      var dataURL = canvas.toDataURL("image/png");
-      return dataURL;
+    doc.autoPrint();
+    doc.output("dataurlnewwindow");
+   // doc.save('tatle');
+    }
+    else{
+      this._error="QR code незадан!"
 
     }
 
-  download() {
-    /* const qrcode = document.getElementById('qrcode');
-    let doc = new jsPDF();
+   }
 
-    let imageData= this.getBase64Image(qrcode.firstChild.firstChild);
-    doc.addImage(imageData, "JPG", 10, 10);
+  public downloadQrKtalog() {
+   // console.log(font);
 
-    doc.save('FirstPdf.pdf'); */
+    /* var callAddFont = function () {
+      this.addFileToVFS('Roboto-Regular-normal.ttf', font);
+      this.addFont('Roboto-Regular-normal.ttf', 'Roboto', 'normal');
+      };
+      jsPDF.API.events.push(['addFonts', callAddFont])
+      */
+
+
+
   }
+
+  private createDoc(doc:jsPDF,base64:string){
+
+
+
+   console.log(   doc.getFontList());
+
+    doc.text(this._fullName,40,5);
+    let y_img=10;
+
+    doc.addImage(base64, 'JPEG', 0, y_img, 20, 20);
+    doc.addImage(base64, 'JPEG', 20, y_img, 20, 20);
+    doc.addImage(base64, 'JPEG', 40, y_img, 20, 20);
+    doc.addImage(base64, 'JPEG', 60, y_img, 20, 20);
+    doc.addImage(base64, 'JPEG', 80, y_img, 20, 20);
+    doc.addImage(base64, 'JPEG', 100, y_img, 20, 20);
+    doc.addImage(base64, 'JPEG', 120, y_img, 20, 20);
+    doc.addImage(base64, 'JPEG', 140, y_img, 20, 20);
+    doc.addImage(base64, 'JPEG', 160, y_img, 20, 20);
+    doc.addImage(base64, 'JPEG', 180, y_img, 20, 20);
+
+  }
+
+  private  getBase64Canvas(canvas:any):string{
+    var dataURL =<string> canvas.toDataURL("image/png");
+    return dataURL;
+
+  }
+
 
 
 }

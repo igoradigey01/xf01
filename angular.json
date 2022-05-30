@@ -34,7 +34,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles/styles.scss"
             ],
-            "scripts": []
+            "scripts": ["src/assets/fonts/Roboto-Regular-normal.js"]
           },
           "configurations": {
             "production": {
@@ -103,7 +103,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles/styles.scss"
             ],
-            "scripts": []
+            "scripts": [ ]
           }
         }
       }

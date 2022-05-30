@@ -1,4 +1,9 @@
 
+<div *ngIf="_error" class="error">
+  {{_error}}
+
+</div>
+<div *ngIf="_flagShowQrKatlog">
 <h4>QR Каталог</h4>
  <div class="qr-img" *ngIf="KatalogURL" >
 
@@ -11,10 +16,11 @@
     <div style="display:flex;justify-content:space-between ;">
 
       <a class="print" (click)="printQrKtalog()" >Печать</a>
-      <a class="print" (click)="printQrKtalog()" >Скачать</a>
+      <a class="print" (click)="downloadQrKtalog()" >Скачать</a>
     </div>
   </li>
  </ul>
+</div>
 
 
 

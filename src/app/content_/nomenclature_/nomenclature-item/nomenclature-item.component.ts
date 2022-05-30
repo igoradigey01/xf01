@@ -32,6 +32,19 @@ export class NomenclatureItemComponent implements OnInit {
     else return undefined;
   }
 
+  public get FullName():string{
+    //debugger
+    let name='';
+    name=this._nomenclature?.name?this._nomenclature.name:'';
+    if(this._nomenclature?.articleName)
+    name=name+this._nomenclature?.articleName=='none'?'':this._nomenclature.articleName;
+    if(this._nomenclature?.colorName)
+    name=name+this._nomenclature?.colorName=='none'?'':this._nomenclature.colorName;
+    if(this._nomenclature?.brandName)
+    name=name+this._nomenclature?.brandName=='none'?'':this._nomenclature.brandName;
+    return 'Это тест';
+
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -117,7 +130,5 @@ export class NomenclatureItemComponent implements OnInit {
     )
 
   }
-
-
 
 }
