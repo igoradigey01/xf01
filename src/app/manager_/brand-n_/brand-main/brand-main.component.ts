@@ -33,7 +33,7 @@ public  loadKatalogs() {
   }
 
 public  onChangeStateView(event:StateView){
- // debugger
+// debugger
     this._flagViewState = event;
     if (this._flagViewState == StateView.create) {
       this._select_brandN = <Brand>{ id: -1, name: '', hidden:false };

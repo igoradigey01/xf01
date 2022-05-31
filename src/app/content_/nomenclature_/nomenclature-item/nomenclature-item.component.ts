@@ -16,6 +16,7 @@ export class NomenclatureItemComponent implements OnInit {
   @Output() public _onChangeBack = new EventEmitter()
   @Input() public _nomenclature: Nomenclature | undefined;
   @Input() public _isChildComponent: boolean = false;
+  @Input() public _katalog_name:string |undefined;
   public _flagShowQRcode: boolean = false;
 
 
@@ -33,16 +34,21 @@ export class NomenclatureItemComponent implements OnInit {
   }
 
   public get FullName():string{
-    //debugger
-    let name='';
-    name=this._nomenclature?.name?this._nomenclature.name:'';
-    if(this._nomenclature?.articleName)
-    name=name+this._nomenclature?.articleName=='none'?'':this._nomenclature.articleName;
-    if(this._nomenclature?.colorName)
-    name=name+this._nomenclature?.colorName=='none'?'':this._nomenclature.colorName;
-    if(this._nomenclature?.brandName)
-    name=name+this._nomenclature?.brandName=='none'?'':this._nomenclature.brandName;
-    return 'Это тест';
+
+       let name='';
+       let article=''
+       let color=''
+       let brand=''
+       name=this._nomenclature?.name?this._nomenclature.name:'';
+       if(this._nomenclature?.articleName)
+       article=this._nomenclature?.articleName==='none'?'':this._nomenclature.articleName;
+       if(this._nomenclature?.colorName)
+       color=this._nomenclature?.colorName==='none'?'':this._nomenclature.colorName;
+       if(this._nomenclature?.brandName)
+       brand=this._nomenclature?.brandName==='none'?'':this._nomenclature.brandName;
+
+     //  console.log( )
+       return name+" "+brand+" "+color+" "+article;
 
   }
 
@@ -80,7 +86,12 @@ export class NomenclatureItemComponent implements OnInit {
 
   }
 
+ public copyLink(){
 
+  console.log("copyLick")
+
+
+ }
 
   public ImgObj(): string {
     // copy paste  from manager module

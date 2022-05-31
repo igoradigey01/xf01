@@ -29,6 +29,7 @@ export class QrCodeComponent implements OnInit {
   @Input()   public _katalogURL:string |undefined;
   @Input() public _flagShowQrKatlog:boolean=true;
   @Input() public _fullName:string=''
+  @Input() public _katalog_name:string|undefined;
   public _error:string|undefined;
   public _clientHostURL:string;
 
@@ -76,7 +77,7 @@ export class QrCodeComponent implements OnInit {
     let imageData=this.getBase64Canvas(toPrint);
     //console.log(imageData);
     let doc = this._repository.DocPDF
-    console.log(doc.getFontList)
+   // console.log(doc.getFontList)
     doc.setProperties({
       title:   this._fullName
 
@@ -96,18 +97,78 @@ export class QrCodeComponent implements OnInit {
    }
 
   public downloadQrKtalog() {
-   // console.log(font);
+    this._error=undefined;
+    const toPrint = document.getElementsByTagName('canvas')[0];
+    if(toPrint){
+    let imageData=this.getBase64Canvas(toPrint);
+    //console.log(imageData);
+    let doc = this._repository.DocPDF
+   // console.log(doc.getFontList)
+    doc.setProperties({
+      title:   this._fullName
 
-    /* var callAddFont = function () {
-      this.addFileToVFS('Roboto-Regular-normal.ttf', font);
-      this.addFont('Roboto-Regular-normal.ttf', 'Roboto', 'normal');
-      };
-      jsPDF.API.events.push(['addFonts', callAddFont])
-      */
+  });
+
+    this.createDoc(doc,imageData);
 
 
+    doc.save(this._fullName);
+    }
+    else{
+      this._error="QR code незадан!"
+
+    }
+  }
+
+  public printQrNomenclature():void{
+    this._error=undefined;
+   const toPrint = document.getElementsByTagName('canvas')[1];
+   if(toPrint){
+   let imageData=this.getBase64Canvas(toPrint);
+   //console.log(imageData);
+   let doc = this._repository.DocPDF
+  // console.log(doc.getFontList)
+   doc.setProperties({
+     title:   this._fullName
+
+ });
+
+   this.createDoc(doc,imageData);
+
+   doc.autoPrint();
+   doc.output("dataurlnewwindow");
+  // doc.save('tatle');
+   }
+   else{
+     this._error="QR code незадан!"
+
+   }
 
   }
+
+ public downloadQrNomenclature() {
+   this._error=undefined;
+   const toPrint = document.getElementsByTagName('canvas')[1];
+   if(toPrint){
+   let imageData=this.getBase64Canvas(toPrint);
+   //console.log(imageData);
+   let doc = this._repository.DocPDF
+  // console.log(doc.getFontList)
+   doc.setProperties({
+     title:   this._fullName
+
+ });
+
+   this.createDoc(doc,imageData);
+
+
+   doc.save(this._fullName);
+   }
+   else{
+     this._error="QR code незадан!"
+
+   }
+ }
 
   private createDoc(doc:jsPDF,base64:string){
 

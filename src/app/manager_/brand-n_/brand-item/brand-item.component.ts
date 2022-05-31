@@ -66,7 +66,7 @@ export class BrandItemComponent implements OnInit {
 
     this._flagInvalid = true;
     this._flag_sendServerData = true;
-     // debugger
+   //  debugger
     this._errorMgs = [];
     if (this._flagViewState == StateView.create) {
       // --- start create--

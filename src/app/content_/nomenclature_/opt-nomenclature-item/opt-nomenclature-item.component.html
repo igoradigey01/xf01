@@ -1,39 +1,22 @@
 <div class="card" style="width: 18rem;margin-left: auto;margin-right: auto;">
   <div *ngIf="!_flagShowQRcode ;else showQR">
   <div class="card-header">
+    <div style="display:flex;justify-content:space-between ;">
+      <button type="button" class="btn btn-link">
+        <a href=" https://wa.me/+79280361055?text=Здравствуйте%20(xf-01)%20Меня%20интересует%20информация%20о%20 ">
+      <img src="/assets/images/massager_social/Whatsapp_64.png" class="img-social-apps" alt="whatsapp" >
+    </a>
+      </button>
+      <button class="btn btn-link" (click)="copyLink()" >copy link</button>
+    </div>
+
 
     <div>ОПТ ( ID ):
       <span *ngIf="_nomenclature">{{_nomenclature.id}} </span>
     </div>
     <div>
-      Название: <div *ngIf="_nomenclature">
-        <span>{{_nomenclature.name}}</span>
-        <span>{{ _nomenclature.katalogName }} &nbsp;
-          <span *ngIf=" _nomenclature?.brandName!=='none';else unbrand">
-            {{ _nomenclature?.brandName }}&nbsp;
-          </span>
-          <ng-template #unbrand>
-            <span></span>
-          </ng-template>
-
-          <span *ngIf=" _nomenclature?.articleName!=='none';else unarticle">
-            {{_nomenclature?.articleName}}&nbsp;
-          </span>
-          <ng-template #unarticle>
-            <span></span>
-          </ng-template>
-
-          <span *ngIf=" _nomenclature?.colorName!=='none';else uncolor">
-            {{_nomenclature?.colorName}}&nbsp;
-          </span>
-          <ng-template #uncolor>
-            <span></span>
-          </ng-template>
-
-
-        </span>
-
-      </div>
+      Название: <br>
+      {{FullName}}
     </div>
   </div>
   <img src="{{ ImgObj() }}" class="card-img-top" alt="{{_nomenclature?.name}}">
@@ -61,6 +44,9 @@
   <app-qr-code
   [_katalogURL]="KatalogURL"
   [_nomenclatureURL]="NomenclatureURL"
+  [_fullName]="FullName"
+  [_katalog_name]="_katalog_name"
+
   >
   </app-qr-code>
 </ng-template>

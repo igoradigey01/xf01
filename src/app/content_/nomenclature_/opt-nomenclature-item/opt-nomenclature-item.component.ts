@@ -17,6 +17,7 @@ export class OptNomenclatureItemComponent implements OnInit {
   @Output() public _onChangeBack = new EventEmitter()
   @Input() public _nomenclature: Nomenclature | undefined;
   @Input()   public _isChildComponent:boolean=false;
+  @Input() public _katalog_name:string |undefined;
 
   public _flagShowQRcode:boolean=false;
 
@@ -34,6 +35,24 @@ export class OptNomenclatureItemComponent implements OnInit {
     else return undefined;
   }
 
+  public get FullName():string{
+
+    let name='';
+    let article=''
+    let color=''
+    let brand=''
+    name=this._nomenclature?.name?this._nomenclature.name:'';
+    if(this._nomenclature?.articleName)
+    article=this._nomenclature?.articleName==='none'?'':this._nomenclature.articleName;
+    if(this._nomenclature?.colorName)
+    color=this._nomenclature?.colorName==='none'?'':this._nomenclature.colorName;
+    if(this._nomenclature?.brandName)
+    brand=this._nomenclature?.brandName==='none'?'':this._nomenclature.brandName;
+
+  //  console.log( )
+    return name+" "+brand+" "+color+" "+article;
+
+}
 
   constructor(
     private route: ActivatedRoute,
@@ -70,6 +89,13 @@ export class OptNomenclatureItemComponent implements OnInit {
    // console.log("NomemclatureItem -- clolrN.lenght"+this.sharedVar.ColorNs.length)
 
   }
+
+  public copyLink(){
+
+    console.log("copyLick")
+
+
+   }
 
   public ImgObj(): string {
     // copy paste  from manager module

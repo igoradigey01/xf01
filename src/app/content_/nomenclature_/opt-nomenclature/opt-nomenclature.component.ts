@@ -39,7 +39,7 @@ export class OptNomenclatureComponent implements OnInit {
   public _flagViewState: StateView = StateView.default;
 
   @Output() public _onChangeRow = new EventEmitter<Nomenclature>()
-
+    
 
   constructor(
     private sharedVar: SharedVarService,

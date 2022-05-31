@@ -44,7 +44,7 @@ export class BrandNService {
   //------------------------------------------------
 
   public Create = (item: Brand): Observable<any> => {
-
+  //debugger
     this._url.Controller = 'BrandN';
     this._url.Action = 'Create';
     this._url.ID=null
@@ -53,7 +53,7 @@ export class BrandNService {
       Accept: 'application/json',
       Authorization: 'Bearer ' + this._token.AccessToken,
     });
-
+ // debugger
     let fd = this.createFormData(item);
 
     new Response(fd).text().then(console.log);

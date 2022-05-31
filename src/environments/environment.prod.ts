@@ -7,7 +7,7 @@ export const environment = {
   clientId:'angular-client',
   postavchikId:'1',
   version:'b2.05.22',
-  description:"Client shop- вторая редакция (angular:13.1.2)(24.05.22)",
+  description:"Client shop- вторая редакция (angular:13.1.2)(31.05.22)",
 
 
 };
