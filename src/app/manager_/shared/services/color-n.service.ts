@@ -47,10 +47,11 @@ export class ColorNService {
   //------------------------------------------------
 
   public Create = (item:Color): Observable<any> => {
-
+     //  debugger
     this._url.Controller = 'ColorN';
     this._url.Action = 'Create';
     this._url.ID=null;
+    item.postavchikId=this._url.PostavchikId;
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       Authorization: 'Bearer ' + this._token.AccessToken,
@@ -74,6 +75,7 @@ export class ColorNService {
    this._url.Controller = 'ColorN';
    this._url.Action = 'Update';
    this._url.ID=item.id;
+   item.postavchikId=this._url.PostavchikId;
  //  debugger
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',

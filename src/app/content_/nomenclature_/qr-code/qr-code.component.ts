@@ -178,17 +178,19 @@ export class QrCodeComponent implements OnInit {
 
     doc.text(this._fullName,40,5);
     let y_img=10;
+    let y=40;
+    let x=40;
 
-    doc.addImage(base64, 'JPEG', 0, y_img, 20, 20);
-    doc.addImage(base64, 'JPEG', 20, y_img, 20, 20);
-    doc.addImage(base64, 'JPEG', 40, y_img, 20, 20);
-    doc.addImage(base64, 'JPEG', 60, y_img, 20, 20);
-    doc.addImage(base64, 'JPEG', 80, y_img, 20, 20);
-    doc.addImage(base64, 'JPEG', 100, y_img, 20, 20);
-    doc.addImage(base64, 'JPEG', 120, y_img, 20, 20);
-    doc.addImage(base64, 'JPEG', 140, y_img, 20, 20);
-    doc.addImage(base64, 'JPEG', 160, y_img, 20, 20);
-    doc.addImage(base64, 'JPEG', 180, y_img, 20, 20);
+    doc.addImage(base64, 'JPEG', 0, y_img, x, y);
+    doc.addImage(base64, 'JPEG', 40, y_img, x, y);
+    doc.addImage(base64, 'JPEG', 80, y_img, x, y);
+    doc.addImage(base64, 'JPEG', 120, y_img, x, y);
+    doc.addImage(base64, 'JPEG', 160, y_img, x, y);
+   // doc.addImage(base64, 'JPEG', 180, y_img, x, y);
+    // doc.addImage(base64, 'JPEG', 120, y_img, 20, 20);
+    // doc.addImage(base64, 'JPEG', 140, y_img, 20, 20);
+    // doc.addImage(base64, 'JPEG', 160, y_img, 20, 20);
+    // doc.addImage(base64, 'JPEG', 180, y_img, 20, 20);
 
   }
 

@@ -7,7 +7,7 @@
 <h4>QR Каталог</h4>
  <div class="qr-img" *ngIf="KatalogURL" >
 
-  <qr-code id="printK" value={{KatalogURL}} size="250" errorCorrectionLevel="M"></qr-code>
+  <qr-code id="printK" value={{KatalogURL}} size="250" errorCorrectionLevel="Q"></qr-code>
 
 
  </div>
@@ -27,7 +27,7 @@
 <h4>QR Номенклатура</h4>
 
 <div class="qr-img" *ngIf="NomenclatureURL" >
-  <qr-code value={{NomenclatureURL}} size="250" errorCorrectionLevel="M"></qr-code>
+  <qr-code value={{NomenclatureURL}} size="250" errorCorrectionLevel="Q"></qr-code>
 </div>
 <ul class="list-group list-group-flush">
   <li class="list-group-item">

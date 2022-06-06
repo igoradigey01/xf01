@@ -13,6 +13,8 @@ import { NomenclatureItemComponent } from './nomenclature_/nomenclature-item/nom
 import { OptNomenclatureItemComponent } from './nomenclature_/opt-nomenclature-item/opt-nomenclature-item.component';
 import {NomenclatureItemResolver} from './shared/resolver/nomenclature-item.resolver'
 import { QrCodeModule } from 'ng-qrcode';
+import { ClipboardModule } from '@angular/cdk/clipboard'
+
 import { QrCodeComponent } from '../content_/nomenclature_/qr-code/qr-code.component';
 
 @NgModule({
@@ -33,7 +35,9 @@ import { QrCodeComponent } from '../content_/nomenclature_/qr-code/qr-code.compo
     ManagerServiceModule,
     UiFrontModule,
     MaterialFrontModule,
-    QrCodeModule
+    QrCodeModule,
+    ClipboardModule
+
   ],
   exports:[
     KatalogNComponent,

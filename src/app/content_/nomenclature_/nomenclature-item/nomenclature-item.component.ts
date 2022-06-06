@@ -4,6 +4,9 @@ import { EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NomenclatureService } from './../../shared/services/nomenclature.servise'
 import { SharedVarService } from 'src/app/_shared/services/shared-var.service';
+import {Clipboard} from '@angular/cdk/clipboard';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-nomenclature-item',
@@ -18,6 +21,7 @@ export class NomenclatureItemComponent implements OnInit {
   @Input() public _isChildComponent: boolean = false;
   @Input() public _katalog_name:string |undefined;
   public _flagShowQRcode: boolean = false;
+  private _clientHostURL:string;
 
 
 
@@ -57,7 +61,11 @@ export class NomenclatureItemComponent implements OnInit {
     private router: Router,
     private repository: NomenclatureService,
     private sharedVar: SharedVarService,
-  ) { }
+    private clipboard: Clipboard
+  ) {
+
+    this._clientHostURL = environment.clientRoot;
+   }
 
   ngOnInit(): void {
 
@@ -86,11 +94,15 @@ export class NomenclatureItemComponent implements OnInit {
 
   }
 
- public copyLink(){
+ public copyLinkN(){
+ if(this.NomenclatureURL)
+ this.clipboard.copy(this._clientHostURL + this.NomenclatureURL)
 
-  console.log("copyLick")
+ }
 
-
+ public copyLinkK(){
+  if(this.KatalogURL)
+  this.clipboard.copy(this._clientHostURL + this.KatalogURL)
  }
 
   public ImgObj(): string {

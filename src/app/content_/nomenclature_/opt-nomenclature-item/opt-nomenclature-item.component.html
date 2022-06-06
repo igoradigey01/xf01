@@ -2,13 +2,11 @@
   <div *ngIf="!_flagShowQRcode ;else showQR">
   <div class="card-header">
     <div style="display:flex;justify-content:space-between ;">
-      <button type="button" class="btn btn-link">
-        <a href=" https://wa.me/+79280361055?text=Здравствуйте%20(xf-01)%20Меня%20интересует%20информация%20о%20 ">
-      <img src="/assets/images/massager_social/Whatsapp_64.png" class="img-social-apps" alt="whatsapp" >
-    </a>
-      </button>
-      <button class="btn btn-link" (click)="copyLink()" >copy link</button>
+
+      <button class="btn btn-link"  (click)="copyLinkK()"  ><mat-icon aria-hidden="false" aria-label="copy katalog link">content_copy</mat-icon>K</button>
+      <button class="btn btn-link" (click)="copyLinkN()" ><mat-icon aria-hidden="false" aria-label="copy nomenclature link">content_copy</mat-icon>N</button>
     </div>
+
 
 
     <div>ОПТ ( ID ):
