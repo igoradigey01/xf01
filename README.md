@@ -1,9 +1,18 @@
 # Xf01
-Client counterparty to Nomenclature for apiX01 <br/>
+(корпусная мебель)  комплектующие - SMC (система управления контентом)<br>
+Client for apiX01 <br/>
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version  13.2.6.
-sample :<br/>
+sample (front):<br/>
 https://xf-01.ru  <br/>
-https://xf-01.ru/content/categoria/katalog/12?katalog=Форнитура <br/>
+
+
+ # XF01 dependency 
+ https://github.com/Mawi137/ngx-image-cropper <br/>
+ https://github.com/parallax/jsPDF<br/>
+ https://www.npmjs.com/package/ng-qrcode<br/>
+ https://material.angular.io/components/categories <br/>
+
 
 # image-cropper
  ui/img-render/img-render.component.ts <br/>

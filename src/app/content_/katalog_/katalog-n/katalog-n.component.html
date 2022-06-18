@@ -3,12 +3,12 @@
 
   <div class="navigate">
     <div class="navigate-route" ><span class="navigate-route-hiden"> категории</span>>каталог</div>
-    <div><h4> {{  _categoriaN_name }}</h4></div>
+
     <div>
       <a  class="navigate-route-link" (click)="onBackInNavBar()" >назад</a>
     </div>
   </div>
-
+  <div><h4> {{  _categoriaN_name }}</h4></div>
   <div class="grid-container">
     <div *ngFor="let item of _katalogNs">
       <div *ngIf="!item.hidden">
